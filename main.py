@@ -1,1 +1,1 @@
-class a:
+class ab:
