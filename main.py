@@ -1,1 +1,1 @@
-a
+class a:
