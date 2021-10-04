@@ -1,2 +1,5 @@
-class ab:
-    aiueo;
+# コマンド表示
+# 名前
+# Lv
+# HP
+# MP
