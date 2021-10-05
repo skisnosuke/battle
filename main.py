@@ -4,6 +4,7 @@ import sys
 from settings import Settings
 #from player import Player
 #from enemy import Enemy
+from log import Log
 
 class Battle:
     #ゲームのアセットと動作を管理する全体的なクラス
@@ -16,6 +17,7 @@ class Battle:
         pygame.display.set_caption("ドラクエ風戦闘ゲーム")
 
     def run_game(self):
+        log = Log()
         #メインループ
         while True:
           #キーボード、マウスの監視
@@ -25,7 +27,9 @@ class Battle:
 
           #画面のリセット
           self.screen.fill(self.settings.bg_color)
+
           #最新の画面の表示
+          log.display(self.screen)
           pygame.display.flip()
 
 if __name__ == "__main__":
