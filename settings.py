@@ -8,12 +8,17 @@ class Settings:
         self.bg_color = (10, 10, 10)
 # 背景画像
 
-# コマンドライン
-#   メッセージ内容
-#     こうげき ぼうぎょ じゅもん にげる
-#     〇〇 の こうげき！ etc
-#   大きさ
-#   フォント
+# コマンド
+#   x
+#   y
+#   width
+#   height
+
+# ログ
+#   x
+#   y
+#   width
+#   height
 
 # 敵
 #   敵画像
@@ -22,6 +27,7 @@ class Settings:
 #   行動
 
 # 主人公
+#   名前
 #   HP
 #   MP
 #   攻撃力

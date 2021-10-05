@@ -18,24 +18,17 @@ class Battle:
     def run_game(self):
         #メインループ
         while True:
-            #キーボード、マウスの監視
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+          #キーボード、マウスの監視
+          for event in pygame.event.get():
+              if event.type == pygame.QUIT:
+                  sys.exit()
 
-            #画面のリセット
-            self.screen.fill(self.settings.bg_color)
-            #最新の画面の表示
-            pygame.display.flip()
+          #画面のリセット
+          self.screen.fill(self.settings.bg_color)
+          #最新の画面の表示
+          pygame.display.flip()
 
 if __name__ == "__main__":
     #ゲームのインスタンスを生成、その後実行する
     battle = Battle()
     battle.run_game()
-
-
-# コマンド表示
-# 名前
-# Lv
-# HP
-# MP
