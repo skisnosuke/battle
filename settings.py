@@ -5,15 +5,21 @@ class Settings:
         """画面設定"""
         self.screen_width = 1000
         self.screen_height = 600
-        self.bg_color = (230, 230, 230)
+        self.bg_color = (10, 10, 10)
+        self.font_name = "font/DragonQuestFCIntact.ttf"
 # 背景画像
 
-# コマンドライン
-#   メッセージ内容
-#     こうげき ぼうぎょ じゅもん にげる
-#     〇〇 の こうげき！ etc
-#   大きさ
-#   フォント
+# コマンド
+#   x
+#   y
+#   width
+#   height
+
+# ログ
+#   x
+#   y
+#   width
+#   height
 
 # 敵
 #   敵画像
@@ -22,6 +28,7 @@ class Settings:
 #   行動
 
 # 主人公
+#   名前
 #   HP
 #   MP
 #   攻撃力
