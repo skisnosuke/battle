@@ -17,7 +17,10 @@ class Battle:
         pygame.display.set_caption("ドラクエ風戦闘ゲーム")
 
     def run_game(self):
-        log = Log()
+        self.log = Log()
+        
+
+
         #メインループ
         while True:
           #キーボード、マウスの監視
@@ -29,7 +32,14 @@ class Battle:
           self.screen.fill(self.settings.bg_color)
 
           #最新の画面の表示
-          log.display(self.screen)
+          self.log.display(self.screen)
+          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.command_position), 10)
+          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.command_position) )
+          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.log_position), 10)
+          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.log_position) )
+          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.player_position), 10)
+          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.player_position) )
+
           pygame.display.flip()
 
 if __name__ == "__main__":
