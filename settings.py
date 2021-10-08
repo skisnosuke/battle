@@ -15,27 +15,15 @@ class Settings:
         #ログ
         self.log_position = (block*3, block*10, block*10, block*5)
         
-        #プレイヤー
-        self.player_position = (block*1, block, block*4, block*6)
-        
         # 背景画像
         self.bg_img = pygame.image.load("img/background.jpg")
+        
+        #プレイヤー
+        self.player_position = (block*1, block, block*4, block*6)
 
         #エネミー
         self.enemy_img = pygame.image.load("img/example.png")
         self.enemy_position = (block*5+10, block*5)
-
-# コマンド
-#   x
-#   y
-#   width
-#   height
-
-# ログ
-#   x
-#   y
-#   width
-#   height
 
 # 敵
 #   敵画像
