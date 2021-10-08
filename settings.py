@@ -17,7 +17,8 @@ class Settings:
         
         #プレイヤー
         self.player_position = (block*1, block, block*4, block*6)
-# 背景画像
+        # 背景画像
+        self.bg_img = pygame.image.load("img/background.jpg")
 
 # コマンド
 #   x

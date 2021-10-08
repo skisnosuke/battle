@@ -15,6 +15,7 @@ class Battle:
         self.settings = Settings()
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
+        self.bg = self.settings.bg_img
         pygame.display.set_caption("ドラクエ風戦闘ゲーム")
 
     def run_game(self):
@@ -22,6 +23,7 @@ class Battle:
         self.command = Command()
         self.player = Player()
         
+        self.screen.blit(self.bg, (0,0))
 
         #メインループ
         while True:
@@ -34,12 +36,15 @@ class Battle:
           self.screen.fill(self.settings.bg_color)
 
           #最新の画面の表示
-          #資格の表示
+          #背景の表示
+          self.screen.blit(self.bg, (0,0))
+          #矩形の表示
           self.command.draw(self.screen)
           self.log.draw(self.screen)
           self.player.draw(self.screen)
+          #テキストの表示
           self.log.display(self.screen)
-
+          #更新
           pygame.display.flip()
 
 if __name__ == "__main__":
