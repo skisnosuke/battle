@@ -30,19 +30,21 @@ class Battle:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                if event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_UP:
                         self.command.action_selected = (
                             (self.command.action_selected - 2) % 4 )
-                    if event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+                    elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
                         self.command.action_selected = (
                             self.command.action_selected + 1 if
                             self.command.action_selected % 2 == 0 else
                             self.command.action_selected - 1 )
-                    if event.key == pygame.K_DOWN:
+                    elif event.key == pygame.K_DOWN:
                         self.command.action_selected = (
                             (self.command.action_selected + 2) % 4 )
-
+                    elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+                        print(self.command.action_selected)
+                        self._update_screen()
                     self._update_screen()
 
     def _update_screen(self):
@@ -58,7 +60,7 @@ class Battle:
         self.log.draw(self.screen)
         self.player.draw(self.screen)
         #テキストの表示
-        self.log.draw(self.screen)
+        self.log.draw(self.screen, self.command.action_selected)
         #更新
         pygame.display.flip()
 

@@ -3,7 +3,6 @@ from pygame.locals import *
 from settings import Settings
 
 class Command:
-    #   たたかう じゅもん にげる どうぐ
   def __init__(self):
     self.settings = Settings()
     self.action_selected = 0
