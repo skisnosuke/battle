@@ -18,4 +18,4 @@ class Player():
     pygame.draw.rect(screen, (0,0,0),
       Rect(self.settings.player_position+self.settings.player_length))
     screen.blit(self.name,
-      tuple(map(lambda n: n+8, self.settings.player_position+self.settings.player_length)))
+      tuple(map(lambda n: n+4, self.settings.player_position)))

@@ -12,10 +12,10 @@ class Settings:
         #コマンド
         self.command_position = (block*7, 10)
         self.command_length = (block*7, block*3)
-        self.command_action_position_upper_left = (block*7+8, 10, block*7, block*2)
-        self.command_action_position_upper_right = (block*7+block*5, 10, block*7, block*2)
-        self.command_action_position_lower_left = (block*7+8, block)
-        self.command_action_position_lower_right = (block*7+block*5, block, block*7, block*2)
+        self.command_action_position_upper_left = (block*8, 10)
+        self.command_action_position_upper_right = (block*7+block*4, 10)
+        self.command_action_position_lower_left = (block*8, 20+block)
+        self.command_action_position_lower_right = (block*7+block*4, 20+block)
         
         #ログ
         self.log_position = (block*3, block*10)
@@ -27,7 +27,7 @@ class Settings:
             (self.screen_width, self.screen_height))
 
         #プレイヤー
-        self.player_position = (block*1, block)
+        self.player_position = (block, 10)
         self.player_length = (block*4, block*6)
 
         #敵 背景

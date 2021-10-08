@@ -6,7 +6,7 @@ class Command:
     #   たたかう じゅもん にげる どうぐ
   def __init__(self):
     self.settings = Settings()
-    self.action_num = 1
+    self.action_selected = 0
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position+self.settings.command_length), 10)
