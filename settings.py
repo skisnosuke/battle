@@ -8,13 +8,22 @@ class Settings:
         self.bg_color = (10, 10, 10)
         self.font_name = "font/DragonQuestFCIntact.ttf"
         block = 30
+        
         #コマンド
         self.command_position = (block*7, 10, block*7, block*3)
+        
         #ログ
         self.log_position = (block*3, block*10, block*10, block*5)
+        
         #プレイヤー
         self.player_position = (block*1, block, block*4, block*6)
-# 背景画像
+        
+        # 背景画像
+        self.bg_img = pygame.image.load("img/background.jpg")
+
+        #エネミー
+        self.enemy_img = pygame.image.load("img/example.png")
+        self.enemy_position = (block*5+10, block*5)
 
 # コマンド
 #   x
