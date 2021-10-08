@@ -14,15 +14,23 @@ class Settings:
         
         #ログ
         self.log_position = (block*3, block*10, block*10, block*5)
+
+        #フィールド
+        field_img_temp = pygame.image.load("img/field.png")
+        self.field_img = pygame.transform.scale(field_img_temp,
+            (self.screen_width, self.screen_height))
         
-        # 背景画像
-        self.bg_img = pygame.image.load("img/background.jpg")
 
         #プレイヤー
         self.player_position = (block*1, block, block*4, block*6)
 
-        #エネミー
-        self.enemy_img = pygame.image.load("img/example.png")
+        #敵 背景
+        bg_img_temp = pygame.image.load("img/field.png")
+        self.bg_img = pygame.transform.scale(bg_img_temp,
+            (self.screen_width, self.screen_height))
+        #敵 本体
+        enemy_img_temp = pygame.image.load("img/example.png")
+        self.enemy_img = pygame.transform.scale(enemy_img_temp, (400, 300))
         self.enemy_position = (block*5+10, block*5)
 
 # 敵
