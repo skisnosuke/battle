@@ -45,7 +45,7 @@ class Battle:
         self.log.draw(self.screen)
         self.player.draw(self.screen)
         #テキストの表示
-        self.log.display(self.screen)
+        self.log.draw(self.screen)
         #更新
         pygame.display.flip()
 
