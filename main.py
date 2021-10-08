@@ -2,9 +2,10 @@ from pygame.locals import *
 import pygame
 import sys
 from settings import Settings
-#from player import Player
+from player import Player
 #from enemy import Enemy
 from log import Log
+from command import Command
 
 class Battle:
     #ゲームのアセットと動作を管理する全体的なクラス
@@ -18,8 +19,9 @@ class Battle:
 
     def run_game(self):
         self.log = Log()
+        self.command = Command()
+        self.player = Player()
         
-
 
         #メインループ
         while True:
@@ -32,13 +34,11 @@ class Battle:
           self.screen.fill(self.settings.bg_color)
 
           #最新の画面の表示
+          #資格の表示
+          self.command.draw(self.screen)
+          self.log.draw(self.screen)
+          self.player.draw(self.screen)
           self.log.display(self.screen)
-          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.command_position), 10)
-          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.command_position) )
-          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.log_position), 10)
-          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.log_position) )
-          pygame.draw.rect(self.screen, (255, 255, 255), Rect(self.settings.player_position), 10)
-          pygame.draw.rect(self.screen, (0,0,0), Rect(self.settings.player_position) )
 
           pygame.display.flip()
 
