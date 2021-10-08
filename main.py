@@ -3,7 +3,7 @@ import pygame
 import sys
 from settings import Settings
 from player import Player
-#from enemy import Enemy
+from enemy import Enemy
 from log import Log
 from command import Command
 
@@ -22,6 +22,7 @@ class Battle:
         self.log = Log()
         self.command = Command()
         self.player = Player()
+        self.enemy = Enemy()
         
         self.screen.blit(self.bg, (0,0))
 
@@ -41,6 +42,7 @@ class Battle:
         #最新の画面の表示
         #背景の表示
         self.screen.blit(self.bg, (0,0))
+        self.enemy.draw(self.screen)
         #矩形の表示
         self.command.draw(self.screen)
         self.log.draw(self.screen)

@@ -17,8 +17,13 @@ class Settings:
         
         #プレイヤー
         self.player_position = (block*1, block, block*4, block*6)
+        
         # 背景画像
         self.bg_img = pygame.image.load("img/background.jpg")
+
+        #エネミー
+        self.enemy_img = pygame.image.load("img/example.png")
+        self.enemy_position = (block*5+10, block*5)
 
 # コマンド
 #   x
