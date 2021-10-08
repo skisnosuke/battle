@@ -6,7 +6,7 @@ class Settings:
         self.screen_width = 480
         self.screen_height = 480
         self.bg_color = (10, 10, 10)
-        self.font_name = "font/DragonQuestFCIntact.ttf"
+        self.font = pygame.font.Font("font/DragonQuestFCIntact.ttf", 20)
         block = 30
         
         #コマンド
@@ -17,7 +17,7 @@ class Settings:
         
         # 背景画像
         self.bg_img = pygame.image.load("img/background.jpg")
-        
+
         #プレイヤー
         self.player_position = (block*1, block, block*4, block*6)
 

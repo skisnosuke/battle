@@ -7,8 +7,7 @@ class Log:
   #   〇〇 の こうげき！
   def __init__(self):
     self.settings = Settings()
-    self.font = pygame.font.Font(self.settings.font_name, 20)
-    self.text = self.font.render("こんにちは", False, (255, 255, 255))
+    self.text = self.settings.font.render("こんにちは", False, (255, 255, 255))
     self.log_position = self.settings.log_position
 
   def display(self, screen):
