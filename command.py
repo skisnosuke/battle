@@ -20,3 +20,17 @@ class Command:
     screen.blit(action_texts[1], self.settings.command_action_position_upper_right)
     screen.blit(action_texts[2], self.settings.command_action_position_lower_left)
     screen.blit(action_texts[3], self.settings.command_action_position_lower_right)
+
+    cursor_positions = [
+      (self.settings.command_action_position_upper_left[0]-18,
+        self.settings.command_action_position_upper_left[1]),
+      (self.settings.command_action_position_upper_right[0]-18,
+        self.settings.command_action_position_upper_right[1]),
+      (self.settings.command_action_position_lower_left[0]-18,
+        self.settings.command_action_position_lower_left[1]),
+      (self.settings.command_action_position_lower_right[0]-18,
+        self.settings.command_action_position_lower_right[1]),
+    ]
+    cursor = self.settings.font.render("｝", False, (255, 255, 255))
+    screen.blit(cursor, cursor_positions[self.action_selected])
+
