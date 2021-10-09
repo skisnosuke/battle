@@ -43,8 +43,7 @@ class Battle:
                         self.command.action_selected = (
                             (self.command.action_selected + 2) % 4 )
                     elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-                        print(self.command.action_selected)
-                        self._update_screen()
+                        self.log.action_idx = self.command.action_selected
                     self._update_screen()
 
     def _update_screen(self):
@@ -60,7 +59,7 @@ class Battle:
         self.log.draw(self.screen)
         self.player.draw(self.screen)
         #テキストの表示
-        self.log.draw(self.screen, self.command.action_selected)
+        self.log.draw(self.screen)
         #更新
         pygame.display.flip()
 
