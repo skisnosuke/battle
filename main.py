@@ -35,6 +35,7 @@ class Battle:
 
             self._update_screen()
 
+
     def _update_screen(self):
         #画面のリセット
         self.screen.fill(self.settings.bg_color)

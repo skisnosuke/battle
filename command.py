@@ -8,6 +8,14 @@ class Command:
     self.settings = Settings()
     self.command_position = self.settings.command_position
 
+  def attack(self):
+    self.settings = Settings()
+    self.attacked = self.settings.status_attack
+    self.enemy_HP = self.settings.enemy_HP
+    self.remain_enemy_HP = self.enemy_HP - self.attacked
+
+    
+
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position), 10)
     pygame.draw.rect(screen, (0,0,0), Rect(self.settings.command_position))
