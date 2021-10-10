@@ -3,18 +3,25 @@ from pygame.locals import *
 from settings import Settings
 
 class Log:
-  #   〇〇が あらわれた！
-  #   〇〇 の こうげき！
   def __init__(self):
     self.settings = Settings()
-    self.font = pygame.font.Font(self.settings.font_name, 20)
-    self.text = self.font.render("こんにちは", False, (255, 255, 255))
-    self.log_position = self.settings.log_position
-
-  def display(self, screen):
-    screen.blit(self.text, (100, 100))
+    self.text = self.settings.font.render("スライムが あらわれた！", False, (255, 255, 255))
+    self.action_idx = 0
 
   def draw(self, screen):
-    pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.log_position), 10)
-    pygame.draw.rect(screen, (0,0,0), Rect(self.settings.log_position))
+    pygame.draw.rect(screen, (255, 255, 255), 
+      Rect(self.settings.log_position+self.settings.log_length), 10)
+    pygame.draw.rect(screen, (0,0,0),
+      Rect(self.settings.log_position+self.settings.log_length))
+
+    # たたかう じゅもん にげる どうぐ
+    messages = [
+      "ゆうしゃの こうげき！",
+      "しかし じゅもんは かきけされた！",
+      "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
+      "どうぐ",
+    ]
+    self.text = self.settings.font.render(messages[self.action_idx], False, (255, 255, 255))
+    screen.blit(self.text,
+      (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
   
