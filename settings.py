@@ -21,6 +21,16 @@ class Settings:
         self.log_position = (block*3, block*10)
         self.log_length = (block*10, block*5)
 
+        #エネミー
+        self.enemy_img = pygame.image.load("img/example.png")
+        self.enemy_position = (block*5+10, block*5)
+        self.enemy_HP = 100
+ 
+
+        #主人公
+        self.status_attack = 5
+
+
         #フィールド
         field_img_temp = pygame.image.load("img/field.png")
         self.field_img = pygame.transform.scale(field_img_temp,

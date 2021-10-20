@@ -46,6 +46,7 @@ class Battle:
                         self.log.action_idx = self.command.action_selected
                     self._update_screen()
 
+
     def _update_screen(self):
         #画面のリセット
         self.screen.fill(self.settings.bg_color)
