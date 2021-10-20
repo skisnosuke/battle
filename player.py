@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from settings import Settings
+from command import Command
       # コマンド表示
       # 名前
       # Lv
@@ -9,8 +10,11 @@ from settings import Settings
 class Player():
   def __init__(self):
     self.settings = Settings()
-    self.player_position = self.settings.player_position
+    self.command = Command()
     self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
+
+  def attack(self):
+    self.remain_enemy_hp = self.command.enemy_hp - self.command.attacked
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255),
