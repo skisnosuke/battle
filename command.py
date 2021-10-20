@@ -6,13 +6,8 @@ class Command:
   def __init__(self):
     self.settings = Settings()
     self.action_selected = 0
-
-  def attack(self):
-    self.settings = Settings()
     self.attacked = self.settings.status_attack
-    self.enemy_HP = self.settings.enemy_HP
-    self.remain_enemy_HP = self.enemy_HP - self.attacked
-
+    self.enemy_hp = self.settings.enemy_hp
     
 
   def draw(self, screen):

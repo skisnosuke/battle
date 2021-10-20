@@ -24,7 +24,7 @@ class Settings:
         #エネミー
         self.enemy_img = pygame.image.load("img/example.png")
         self.enemy_position = (block*5+10, block*5)
-        self.enemy_HP = 100
+        self.enemy_hp = 100
  
 
         #主人公
