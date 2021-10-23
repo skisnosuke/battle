@@ -31,21 +31,24 @@ class Battle:
                 if event.type == pygame.QUIT:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_UP:
-                        self.command.action_selected = (
-                            (self.command.action_selected - 2) % 4 )
-                    elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
-                        self.command.action_selected = (
-                            self.command.action_selected + 1 if
-                            self.command.action_selected % 2 == 0 else
-                            self.command.action_selected - 1 )
-                    elif event.key == pygame.K_DOWN:
-                        self.command.action_selected = (
-                            (self.command.action_selected + 2) % 4 )
-                    elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-                        self.log.action_idx = self.command.action_selected
-                    self._update_screen()
+                    self._check_key(event)
 
+
+    def _check_key_event(self, event):
+        if event.key == pygame.K_UP:
+            self.command.action_selected = (
+                (self.command.action_selected - 2) % 4 )
+        elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
+            self.command.action_selected = (
+                self.command.action_selected + 1 if
+                self.command.action_selected % 2 == 0 else
+                self.command.action_selected - 1 )
+        elif event.key == pygame.K_DOWN:
+                self.command.action_selected = (
+                    (self.command.action_selected + 2) % 4 )
+        elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+            self.log.action_idx = self.command.action_selected
+        self._update_screen()
 
     def _update_screen(self):
         #画面のリセット
