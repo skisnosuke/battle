@@ -9,6 +9,14 @@ class Settings:
         self.font = pygame.font.Font("font/DragonQuestFC.ttf", 32)
         block = 30
         
+        #サウンド
+        self.bgm = "sound/bgm.mp3"
+        self.attack_s = "sound/attack.wav"
+        self.attacked_s = "sound/attacked.wav"
+        self.incantation_s = "sound/incantation.wav"
+        self.cursor_s = "sound/cursor.wav"
+        self.end_s = "sound/end.wav"
+
         #コマンド
         self.command_position = (block*7, 10)
         self.command_length = (block*7, block*3)
