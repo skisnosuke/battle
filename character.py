@@ -1,26 +1,15 @@
-import pygame
-from pygame.locals import *
-from settings import Settings
-from command import Command
-      # コマンド表示
-      # 名前
-      # Lv
-      # HP
-      # MP
 class Character():
-  def __init__(self):
-    self.settings = Settings()
-    self.command = Command()
-    # self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
-    self.status_attack = self.settings.status_attack
+  def __init__(self, attack, hp, name):
+    self.__status_attack = attack
+    self.__status_hp = hp
+    self.__status_name = name
 
-  #def attack(self):
-    #self.remain_enemy_hp = self.command.enemy_hp - self.command.attacked
-
-  def draw(self, screen):
-    pygame.draw.rect(screen, (255, 255, 255),
-      Rect(self.settings.player_position+self.settings.player_length), 10)
-    pygame.draw.rect(screen, (0,0,0),
-      Rect(self.settings.player_position+self.settings.player_length))
-    screen.blit(self.name,
-      tuple(map(lambda n: n+4, self.settings.player_position)))
+  def attack(self, target):
+    target.reduce_hp(self.__status_attack)
+  
+  def reduce_hp(self, attack):
+    if(self.__status_hp >= attack):
+      self.__status_hp -= attack
+    else:
+      self.__status_hp = 0
+    print(self.__status_name+" hp: %d, by character.reduce_hp()" % self.__status_hp)

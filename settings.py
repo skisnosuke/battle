@@ -29,15 +29,6 @@ class Settings:
         self.log_position = (block*3, block*10)
         self.log_length = (block*10, block*5)
 
-        #エネミー
-        self.enemy_img = pygame.image.load("img/example.png")
-        self.enemy_position = (block*5+10, block*5)
-        self.enemy_hp = 100
- 
-
-        #主人公
-        self.status_attack = 5
-
 
         #フィールド
         field_img_temp = pygame.image.load("img/field.png")
@@ -47,6 +38,10 @@ class Settings:
         #プレイヤー
         self.player_position = (block, 10)
         self.player_length = (block*4, block*6)
+        self.player_status_attack = 2
+        self.player_status_hp = 22
+        self.player_status_name = "ゆうしゃ"
+
 
         #敵 背景
         enemy_bg_img_temp = pygame.image.load("img/background.jpg")
@@ -57,6 +52,9 @@ class Settings:
         enemy_img_temp = pygame.image.load("img/slime.png")
         self.enemy_img = pygame.transform.scale(enemy_img_temp, (block*3, block*3))
         self.enemy_position = (block*7, block*6)
+        self.enemy_status_attack = 10
+        self.enemy_status_hp = 4
+        self.enemy_status_name = "スライム"
 
 # 敵
 #   敵画像

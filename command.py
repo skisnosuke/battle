@@ -6,7 +6,11 @@ class Command:
   def __init__(self):
     self.settings = Settings()
     self.action_selected = 0
-    self.attacked = self.settings.status_attack
+    # self.attacked = self.settings.status_attack
+  
+  def act(self, player, target):
+    if(self.action_selected == 0):  #たたかう
+      player.attack(target)
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position+self.settings.command_length), 10)
