@@ -11,11 +11,11 @@ class Settings:
         
         #サウンド
         self.bgm = "sound/bgm.mp3"
-        self.attack_s = "sound/attack.wav"
-        self.attacked_s = "sound/attacked.wav"
-        self.incantation_s = "sound/incantation.wav"
-        self.cursor_s = "sound/cursor.wav"
-        self.end_s = "sound/end.wav"
+        self.attack_sound = "sound/attack.wav"
+        self.attacked_sound = "sound/attacked.wav"
+        self.incantation_sound = "sound/incantation.wav"
+        self.cursor_sound = "sound/cursor.wav"
+        self.end_sound = "sound/end.wav"
 
         #コマンド
         self.command_position = (block*7, 10)

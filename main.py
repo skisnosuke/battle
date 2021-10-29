@@ -21,11 +21,11 @@ class Battle:
         pygame.mixer.music.load(self.settings.bgm)
 
         #効果音のロード
-        self.attack_s = pygame.mixer.Sound(self.settings.attack_s)
-        self.attacked_s = pygame.mixer.Sound(self.settings.attacked_s)
-        self.incantation_s = pygame.mixer.Sound(self.settings.incantation_s)
-        self.cursor_s = pygame.mixer.Sound(self.settings.cursor_s)
-        self.end_s = pygame.mixer.Sound(self.settings.end_s)
+        self.attack_sound = pygame.mixer.Sound(self.settings.attack_sound)
+        self.attacked_sound = pygame.mixer.Sound(self.settings.attacked_sound)
+        self.incantation_sound = pygame.mixer.Sound(self.settings.incantation_sound)
+        self.cursor_sound = pygame.mixer.Sound(self.settings.cursor_sound)
+        self.end_sound = pygame.mixer.Sound(self.settings.end_sound)
 
 
     def run_game(self):
