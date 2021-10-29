@@ -6,7 +6,6 @@ class Command:
   def __init__(self):
     self.settings = Settings()
     self.action_selected = 0
-    # self.attacked = self.settings.status_attack
   
   def act(self, player, target):
     if(self.action_selected == 0):  #たたかう
@@ -37,4 +36,3 @@ class Command:
     ]
     cursor = self.settings.font.render("｝", False, (255, 255, 255))
     screen.blit(cursor, cursor_positions[self.action_selected])
-
