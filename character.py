@@ -7,11 +7,11 @@ from command import Command
       # Lv
       # HP
       # MP
-class Player(Character):
+class Character():
   def __init__(self):
     self.settings = Settings()
     self.command = Command()
-    self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
+    # self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
     self.status_attack = self.settings.status_attack
 
   #def attack(self):
