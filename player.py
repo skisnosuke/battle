@@ -12,9 +12,10 @@ class Player():
     self.settings = Settings()
     self.command = Command()
     self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
+    self.status_attack = self.settings.status_attack
 
-  def attack(self):
-    self.remain_enemy_hp = self.command.enemy_hp - self.command.attacked
+  #def attack(self):
+    #self.remain_enemy_hp = self.command.enemy_hp - self.command.attacked
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255),
