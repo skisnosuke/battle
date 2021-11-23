@@ -6,7 +6,10 @@ class Log:
   def __init__(self):
     self.settings = Settings()
     self.text = self.settings.font.render("スライムが あらわれた！", False, (255, 255, 255))
-    self.action_idx = 0
+    self.__action_idx = 0
+
+  def change_action_idx(self, idx):
+    self.__action_idx = idx
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), 
@@ -21,7 +24,6 @@ class Log:
       "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
       "どうぐ",
     ]
-    self.text = self.settings.font.render(messages[self.action_idx], False, (255, 255, 255))
+    self.text = self.settings.font.render(messages[self.__action_idx], False, (255, 255, 255))
     screen.blit(self.text,
       (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
-  

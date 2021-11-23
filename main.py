@@ -21,12 +21,11 @@ class Battle:
         pygame.mixer.music.load(self.settings.bgm)
 
         #効果音のロード
-        self.attack_s = pygame.mixer.Sound(self.settings.attack_s)
-        self.attacked_s = pygame.mixer.Sound(self.settings.attacked_s)
-        self.incantation_s = pygame.mixer.Sound(self.settings.incantation_s)
-        self.cursor_s = pygame.mixer.Sound(self.settings.cursor_s)
-        self.end_s = pygame.mixer.Sound(self.settings.end_s)
-
+        self.attack_sound = pygame.mixer.Sound(self.settings.attack_sound)
+        self.attacked_sound = pygame.mixer.Sound(self.settings.attacked_sound)
+        self.incantation_sound = pygame.mixer.Sound(self.settings.incantation_sound)
+        self.cursor_sound = pygame.mixer.Sound(self.settings.cursor_sound)
+        self.end_sound = pygame.mixer.Sound(self.settings.end_sound)
 
     def run_game(self):
         self.log = Log()
@@ -45,24 +44,24 @@ class Battle:
                 elif event.type == pygame.KEYDOWN:
                     self._check_key_event(event)
 
-
     def _check_key_event(self, event):
         if event.key == pygame.K_UP:
             self.command.action_selected = (
                 (self.command.action_selected - 2) % 4 )
-            self.cursor_s.play()
+            self.cursor_sound.play()
         elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
             self.command.action_selected = (
                 self.command.action_selected + 1 if
                 self.command.action_selected % 2 == 0 else
                 self.command.action_selected - 1 )
-            self.cursor_s.play()
+            self.cursor_sound.play()
         elif event.key == pygame.K_DOWN:
                 self.command.action_selected = (
                     (self.command.action_selected + 2) % 4 )
-                self.cursor_s.play()
+                self.cursor_sound.play()
         elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-            self.log.action_idx = self.command.action_selected
+            self.log.change_action_idx(self.command.action_selected)
+            self.command.act(self.player, self.enemy)
         self._update_screen()
 
     def _update_screen(self):
