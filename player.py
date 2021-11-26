@@ -13,7 +13,7 @@ class Player(Character):
     self.settings = Settings()
     self.command = Command()
     self.name = self.settings.font.render("ゆうしゃ", False, (255, 255, 255))
-    self.status_attack = self.settings.status_attack
+    self.status_attack = self.settings.player_status_attack
     self.font = pygame.font.Font(None, 35)
 
   #def attack(self):
@@ -24,11 +24,11 @@ class Player(Character):
       Rect(self.settings.player_position+self.settings.player_length), 10)
     pygame.draw.rect(screen, (0,0,0),
       Rect(self.settings.player_position+self.settings.player_length))
-    str_hp = "HP : {:02}".format(self.settings.status_hp)
-    str_mp = "MP : {:01}".format(self.settings.status_mp)
-    str_lv = "LV : {:01}".format(self.settings.status_lv)
+    str_hp = "HP : {:02}".format(self.settings.player_status_hp)
+    str_mp = "MP : {:01}".format(self.settings.player_status_mp)
+    str_lv = "LV : {:01}".format(self.settings.player_status_lv)
 
-    name = self.settings.font.render(self.settings.status_name, True, (255, 255, 255))
+    name = self.settings.font.render(self.settings.player_status_name, True, (255, 255, 255))
     hp = self.font.render(str_hp, True, (255, 255, 255))
     mp = self.font.render(str_mp,True, (255, 255, 255))
     level = self.font.render(str_lv, True, (255, 255, 255))

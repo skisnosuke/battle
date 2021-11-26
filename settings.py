@@ -33,18 +33,7 @@ class Settings:
         self.enemy_img = pygame.image.load("img/example.png")
         self.enemy_position = (block*5+10, block*5)
         self.enemy_hp = 100
- 
-
-        #主人公
-        self.status_name = "ゆうしゃ"
-        self.status_attack = 5
-        self.status_hp = 10
-        self.status_mp = 0
-        self.status_lv = 1
-
-
-
-
+        
         #フィールド
         field_img_temp = pygame.image.load("img/field.png")
         self.field_img = pygame.transform.scale(field_img_temp,
@@ -53,8 +42,10 @@ class Settings:
         #プレイヤー
         self.player_position = (block, 10)
         self.player_length = (block*4, block*6)
-        self.player_status_attack = 2
-        self.player_status_hp = 22
+        self.player_status_attack = 5
+        self.player_status_hp = 10
+        self.player_status_mp = 0
+        self.player_status_lv = 1
         self.player_status_name = "ゆうしゃ"
 
 
