@@ -36,7 +36,13 @@ class Settings:
  
 
         #主人公
+        self.status_name = "ゆうしゃ"
         self.status_attack = 5
+        self.status_hp = 10
+        self.status_mp = 0
+        self.status_lv = 1
+
+
 
 
         #フィールド
