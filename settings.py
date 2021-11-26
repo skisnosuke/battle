@@ -59,7 +59,7 @@ class Settings:
         self.enemy_img = pygame.transform.scale(enemy_img_temp, (block*3, block*3))
         self.enemy_position = (block*7, block*6)
         self.enemy_status_attack = 10
-        self.enemy_status_hp = 4
+        self.enemy_status_hp = 20
         self.enemy_status_name = "スライム"
 
 # 敵

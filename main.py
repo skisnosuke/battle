@@ -18,7 +18,7 @@ class Battle:
         pygame.display.set_caption("ドラクエ風戦闘ゲーム")
 
         #bgmのロード
-        #pygame.mixer.music.load(self.settings.bgm)
+        pygame.mixer.music.load(self.settings.bgm)
 
         #効果音のロード
         self.attack_sound = pygame.mixer.Sound(self.settings.attack_sound)
