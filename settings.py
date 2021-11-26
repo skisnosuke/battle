@@ -11,11 +11,11 @@ class Settings:
         
         #サウンド
         self.bgm = "sound/bgm.mp3"
-        self.attack_s = "sound/attack.wav"
-        self.attacked_s = "sound/attacked.wav"
-        self.incantation_s = "sound/incantation.wav"
-        self.cursor_s = "sound/cursor.wav"
-        self.end_s = "sound/end.wav"
+        self.attack_sound = "sound/attack.wav"
+        self.attacked_sound = "sound/attacked.wav"
+        self.incantation_sound = "sound/incantation.wav"
+        self.cursor_sound = "sound/cursor.wav"
+        self.end_sound = "sound/end.wav"
 
         #コマンド
         self.command_position = (block*7, 10)
@@ -53,6 +53,10 @@ class Settings:
         #プレイヤー
         self.player_position = (block, 10)
         self.player_length = (block*4, block*6)
+        self.player_status_attack = 2
+        self.player_status_hp = 22
+        self.player_status_name = "ゆうしゃ"
+
 
         #敵 背景
         enemy_bg_img_temp = pygame.image.load("img/background.jpg")
@@ -63,6 +67,9 @@ class Settings:
         enemy_img_temp = pygame.image.load("img/slime.png")
         self.enemy_img = pygame.transform.scale(enemy_img_temp, (block*3, block*3))
         self.enemy_position = (block*7, block*6)
+        self.enemy_status_attack = 10
+        self.enemy_status_hp = 4
+        self.enemy_status_name = "スライム"
 
 # 敵
 #   敵画像

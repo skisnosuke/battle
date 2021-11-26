@@ -2,12 +2,13 @@ import pygame
 from pygame.locals import *
 from settings import Settings
 from command import Command
+from character import Character
       # コマンド表示
       # 名前
       # Lv
       # HP
       # MP
-class Player():
+class Player(Character):
   def __init__(self):
     self.settings = Settings()
     self.command = Command()
