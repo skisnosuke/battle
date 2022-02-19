@@ -34,12 +34,17 @@ class Settings:
 
         #プレイヤー
         self.player_position = (block, 10)
-        self.player_length = (block*4, block*6)
+        self.player_length = (block*4, block*4+10)
         self.player_status_attack = 5
         self.player_status_name = "ゆうしゃ"
-        self.player_status_lv = 1
+        self.player_status_level = 1
         self.player_status_hp = 10
         self.player_status_mp = 0
+        self.player_status_name_position = (40, 20)
+        self.player_status_level_position = (40, 50)
+        self.player_status_hp_position = (40, 80)
+        self.player_status_mp_position = (40, 110)
+
 
         #敵 背景
         enemy_bg_img_tmp = pygame.image.load("img/background.jpg")
@@ -50,8 +55,9 @@ class Settings:
         self.enemy_img = pygame.transform.scale(enemy_img_tmp, (block*3, block*3))
         self.enemy_position = (block*7, block*6)
         self.enemy_status_attack = 10
-        self.enemy_status_hp = 20
         self.enemy_status_name = "スライム"
+        self.enemy_status_hp = 20
+        self.enemy_status_mp = 0
 
 # 敵
 #   敵画像

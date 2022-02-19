@@ -1,15 +1,16 @@
 class Character():
-  def __init__(self, attack, hp, name):
-    self.settings.player_status_attack = attack
-    self.settings.enemy_status_hp = hp
-    self.settings.enemy_status_name = name
+  def __init__(self, attack, name, hp, mp):
+    self.status_attack = attack
+    self.name = name
+    self.hp = hp
+    self.mp = mp
 
   def attack(self, target):
-    target.reduce_hp(self.settings.enemy_status_attack)
+    target.reduce_hp(self.status_attack)
   
   def reduce_hp(self, attack):
-    if(self.settings.enemy_status_hp >= attack):
-      self.settings.enemy_status_hp -= attack
+    if(self.hp > attack):
+      self.hp -= attack
     else:
-      self.settings.enemy_status_hp = 0
-    print(self.settings.enemy_status_name+" hp: %d, by character.reduce_hp()" % self.settings.enemy_status_hp)
+      self.hp = 0
+    print(self.name+" hp: %d, by character.reduce_hp()" % self.hp)
