@@ -6,7 +6,9 @@ class Settings:
         self.screen_width = 480
         self.screen_height = 480
         self.bg_color = (10, 10, 10)
-        self.font = pygame.font.Font("font/DragonQuestFC.ttf", 32)
+        # self.font = pygame.font.Font("font/DragonQuestFC.ttf", 32)
+        # self.font = pygame.font.Font("font/DragonQuestFCIntact.ttf", 32)
+        self.font = pygame.font.Font("font/PixelMplus10-Regular.ttf", 32)
         block = 30
         
         #サウンド
@@ -47,7 +49,6 @@ class Settings:
         self.player_status_mp = 0
         self.player_status_lv = 1
         self.player_status_name = "ゆうしゃ"
-
 
         #敵 背景
         enemy_bg_img_temp = pygame.image.load("img/background.jpg")

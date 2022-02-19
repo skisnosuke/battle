@@ -5,7 +5,8 @@ from settings import Settings
 class Log:
   def __init__(self):
     self.settings = Settings()
-    self.text = self.settings.font.render("スライムが あらわれた！", False, (255, 255, 255))
+    self.font = self.settings.font
+    self.text = self.font.render("スライムが あらわれた！", False, (255, 255, 255))
     self.__action_idx = 0
 
   def change_action_idx(self, idx):
