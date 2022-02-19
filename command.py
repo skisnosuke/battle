@@ -34,5 +34,5 @@ class Command:
       (self.settings.command_action_position_lower_right[0]-18,
         self.settings.command_action_position_lower_right[1]),
     ]
-    cursor = self.settings.font.render("｝", False, (255, 255, 255))
+    cursor = self.settings.font.render("▶", False, (255, 255, 255))
     screen.blit(cursor, cursor_positions[self.action_selected])

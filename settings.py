@@ -6,9 +6,7 @@ class Settings:
         self.screen_width = 480
         self.screen_height = 480
         self.bg_color = (10, 10, 10)
-        # self.font = pygame.font.Font("font/DragonQuestFC.ttf", 32)
-        # self.font = pygame.font.Font("font/DragonQuestFCIntact.ttf", 32)
-        self.font = pygame.font.Font("font/PixelMplus10-Regular.ttf", 32)
+        self.font = pygame.font.Font("font/PixelMplus10-Regular.ttf", 20)
         block = 30
         
         #サウンド
