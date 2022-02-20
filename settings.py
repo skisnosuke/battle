@@ -58,15 +58,3 @@ class Settings:
         self.enemy_status_name = "スライム"
         self.enemy_status_hp = 20
         self.enemy_status_mp = 0
-
-# 敵
-#   敵画像
-#   HP
-#   攻撃力
-#   行動
-
-# 主人公
-#   名前
-#   HP
-#   MP
-#   攻撃力
