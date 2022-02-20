@@ -36,3 +36,4 @@ class Command:
     ]
     cursor = self.settings.font.render("▶", False, (255, 255, 255))
     screen.blit(cursor, cursor_positions[self.action_selected])
+    

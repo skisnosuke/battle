@@ -26,3 +26,4 @@ class Player(Character):
     screen.blit(level, self.settings.player_status_level_position)
     screen.blit(hp, self.settings.player_status_hp_position)
     screen.blit(mp, self.settings.player_status_mp_position)
+    
