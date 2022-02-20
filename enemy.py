@@ -12,4 +12,4 @@ class Enemy(Character):
         screen.blit(self.settings.enemy_img, self.settings.enemy_position)
 
     def attacked(self, damage):
-        # self.enemy_hp -= damage
+        self.enemy_hp -= damage
