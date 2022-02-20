@@ -39,7 +39,7 @@ class Settings:
         self.player_status_name = "ゆうしゃ"
         self.player_status_level = 1
         self.player_status_hp = 10
-        self.player_status_mp = 0
+        self.player_status_mp = 5
         self.player_status_name_position = (40, 20)
         self.player_status_level_position = (40, 50)
         self.player_status_hp_position = (40, 80)

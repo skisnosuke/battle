@@ -7,7 +7,7 @@ from character import Character
 class Player(Character):
   def __init__(self):
     self.settings = Settings()
-    super().__init__(self.settings.enemy_status_attack, self.settings.enemy_status_name, self.settings.enemy_status_hp, self.settings.enemy_status_mp)
+    super().__init__(self.settings.player_status_attack, self.settings.player_status_name, self.settings.player_status_hp, self.settings.player_status_mp)
     self.command = Command()
     self.font = self.settings.font
     self.status_attack = self.settings.player_status_attack
@@ -26,4 +26,3 @@ class Player(Character):
     screen.blit(level, self.settings.player_status_level_position)
     screen.blit(hp, self.settings.player_status_hp_position)
     screen.blit(mp, self.settings.player_status_mp_position)
-    
