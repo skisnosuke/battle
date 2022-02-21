@@ -13,7 +13,7 @@ class Character():
 
   def incantation(self, target):
     if(self.mp > self.settings.mera):
-      target.reduce_hp(5)
+      target.reduce_hp(settings.mera_damage)
       self.mp -= self.settings.mera
   
   def reduce_hp(self, attack):

@@ -60,9 +60,9 @@ class Battle:
                     (self.command.action_selected + 2) % 4 )
                 self.cursor_sound.play()
         elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+            self.cursor_sound.play()
             self.log.change_action_idx(self.command.action_selected)
             self.command.act(self.player, self.enemy)
-            self.cursor_sound.play()
         self._update_screen()
 
     def _update_screen(self):
