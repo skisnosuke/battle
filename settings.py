@@ -61,4 +61,5 @@ class Settings:
 
         #呪文の消費MP
         self.mera = 2
+        self.mera_damage = 10
         

@@ -62,6 +62,7 @@ class Battle:
         elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
             self.log.change_action_idx(self.command.action_selected)
             self.command.act(self.player, self.enemy)
+            self.cursor_sound.play()
         self._update_screen()
 
     def _update_screen(self):
