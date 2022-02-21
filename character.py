@@ -7,6 +7,9 @@ class Character():
 
   def attack(self, target):
     target.reduce_hp(self.status_attack)
+
+  def incantation(self, target):
+    target.reduce_hp(5)
   
   def reduce_hp(self, attack):
     if(self.hp > attack):
