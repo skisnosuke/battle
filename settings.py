@@ -58,3 +58,7 @@ class Settings:
         self.enemy_status_name = "スライム"
         self.enemy_status_hp = 20
         self.enemy_status_mp = 0
+
+        #呪文の消費MP
+        self.mera = 2
+        
