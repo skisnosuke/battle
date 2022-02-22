@@ -21,10 +21,15 @@ class Log:
     # たたかう じゅもん にげる どうぐ
     messages = [
       "ゆうしゃの こうげき！",
-      "ゆうしゃは 呪文を唱えた",
+      "ゆうしゃは じゅもんをとなえた",
       "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
       "どうぐ",
     ]
     self.text = self.settings.font.render(messages[self.__action_idx], False, (255, 255, 255))
     screen.blit(self.text,
       (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
+
+  def draw_damage(self, damege):
+    self.text = self.settings.font.render("スライムに"+damage+"のダメージ")
+    screen.blit(self.text,
+     (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
