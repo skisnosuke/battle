@@ -7,7 +7,11 @@ from character import Character
 class Player(Character):
   def __init__(self):
     self.settings = Settings()
-    super().__init__(self.settings.player_status_attack, self.settings.player_status_name, self.settings.player_status_hp, self.settings.player_status_mp)
+    super().__init__(self.settings.player_status_attack,
+                     self.settings.player_status_name, 
+                     self.settings.player_status_hp, 
+                     self.settings.player_status_mp, 
+                     self.settings.spells)
     self.command = Command()
     self.font = self.settings.font
     self.status_attack = self.settings.player_status_attack
