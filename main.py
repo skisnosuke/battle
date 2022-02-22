@@ -66,21 +66,21 @@ class Battle:
             self.command.act(self.player, self.enemy)
             self._update_screen()
             self.flag = True
-            while self.flag:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        sys.exit()
-                    elif event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_RETURN:
-                            if self.command.action_selected == 0:
-                                self.attack_sound.play()
-                                time.sleep(1)
-                            elif self.command.action_selected == 1:
-                                self.incantation_sound.play()
-                                time.sleep(1.5)
-                            self.attacked_sound.play()
-                            self.flag = False
-                            break
+            if self.command.action_selected == 0 or self.command.action_selected == 1:
+                while self.flag:
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            sys.exit()
+                        elif event.type == pygame.KEYDOWN:
+                            if event.key == pygame.K_RETURN:
+                                if self.command.action_selected == 0:
+                                    self.attack_sound.play()
+                                    time.sleep(1)
+                                elif self.command.action_selected == 1:
+                                    self.incantation_sound.play()
+                                    time.sleep(1.5)
+                                self.attacked_sound.play()
+                                self.flag = False
 
         self._update_screen()
 
