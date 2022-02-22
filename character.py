@@ -11,9 +11,9 @@ class Character():
   def attack(self, target):
     target.reduce_hp(self.status_attack)
 
-  def incantation(self, target):
+  def cast_spell(self, target):
     if(self.mp > self.settings.mera):
-      target.reduce_hp(settings.mera_damage)
+      target.reduce_hp(self.settings.mera_damage)
       self.mp -= self.settings.mera
   
   def reduce_hp(self, attack):
