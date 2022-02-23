@@ -1,5 +1,5 @@
-from pygame.locals import *
 import pygame
+from pygame.locals import *
 import sys
 from settings import Settings
 from player import Player
