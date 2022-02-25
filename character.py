@@ -15,6 +15,9 @@ class Character():
     if(self.mp > self.spells[spell]["mp"]):
       self.mp -= self.spells[spell]["mp"]
       target.reduce_hp(self.spells[spell]["damage"])
+      return True
+    else:
+      return False
   
   def reduce_hp(self, attack):
     if(self.hp > attack):

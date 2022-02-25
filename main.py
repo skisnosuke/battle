@@ -64,7 +64,6 @@ class Battle:
         elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
             self.cursor_sound.play()
             self.log.change_action_idx(self.command.action_selected)
-            self.command.act(self.player, self.enemy)
             self._update_screen()
             self._wait_key_down()
 
@@ -84,15 +83,18 @@ class Battle:
 
     def _effect_of_attack(self, act):
         if act == 0:
+            self.command.act(self.player, self.enemy)
             self.attack_sound.play()
             time.sleep(1)
             self.attacked_sound.play()
 
     def _effect_of_spell(self, act):
         if act == 1:
-            self.spell_sound.play()
-            time.sleep(1.5)
-            self.attacked_sound.play()
+            self.canCastSpell = self.command.cast(self.player, self.enemy)
+            if self.canCastSpell == True:
+                self.spell_sound.play()
+                time.sleep(1.5)
+                self.attacked_sound.play()
 
     def _effect_of_escape(self, act):
         if act == 2:
