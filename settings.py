@@ -15,6 +15,7 @@ class Settings:
         self.incantation_sound = "sound/incantation.wav"
         self.cursor_sound = "sound/cursor.wav"
         self.end_sound = "sound/end.wav"
+        self.escape_sound = "sound/escape.wav"
 
         #コマンド
         self.command_position = (block*7, 10)

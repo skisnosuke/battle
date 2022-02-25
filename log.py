@@ -29,7 +29,7 @@ class Log:
     screen.blit(self.text,
       (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
 
-  def draw_damage(self, damege):
-    self.text = self.settings.font.render("スライムに"+damage+"のダメージ")
-    screen.blit(self.text,
-     (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
+  #def draw_damage(self, damege):
+    #self.text = self.settings.font.render("スライムに"+damage+"のダメージ")
+    #screen.blit(self.text,
+     #(tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))

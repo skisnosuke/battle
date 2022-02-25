@@ -27,6 +27,7 @@ class Battle:
         self.incantation_sound = pygame.mixer.Sound(self.settings.incantation_sound)
         self.cursor_sound = pygame.mixer.Sound(self.settings.cursor_sound)
         self.end_sound = pygame.mixer.Sound(self.settings.end_sound)
+        self.escape_sound = pygame.mixer.Sound(self.settings.escape_sound)
 
     def run_game(self):
         self.log = Log()
@@ -65,24 +66,38 @@ class Battle:
             self.log.change_action_idx(self.command.action_selected)
             self.command.act(self.player, self.enemy)
             self._update_screen()
-            self.flag = True
-            if self.command.action_selected == 0 or self.command.action_selected == 1:
-                while self.flag:
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            sys.exit()
-                        elif event.type == pygame.KEYDOWN:
-                            if event.key == pygame.K_RETURN:
-                                if self.command.action_selected == 0:
-                                    self.attack_sound.play()
-                                    time.sleep(1)
-                                elif self.command.action_selected == 1:
-                                    self.incantation_sound.play()
-                                    time.sleep(1.5)
-                                self.attacked_sound.play()
-                                self.flag = False
+            self._wait_key_down()
 
         self._update_screen()
+
+    def _wait_key_down(self):
+        self.isPress = True
+        while self.isPress:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    self._effect_of_attack(self.command.action_selected)
+                    self._effect_of_incation(self.command.action_selected)
+                    self._effect_of_escape(self.command.action_selected)
+                    self.isPress = False
+
+    def _effect_of_attack(self, act):
+        if act == 0:
+            self.attack_sound.play()
+            time.sleep(1)
+            self.attacked_sound.play()
+
+    def _effect_of_incation(self, act):
+        if act == 1:
+            self.incantation_sound.play()
+            time.sleep(1.5)
+            self.attacked_sound.play()
+
+    def _effect_of_escape(self, act):
+        if act == 2:
+            self.escape_sound.play()
+
 
     def _update_screen(self):
         #画面のリセット
