@@ -2,7 +2,6 @@ from settings import Settings
 
 class Character():
   def __init__(self, attack, name, hp, mp, spells):
-    self.settings = Settings()
     self.status_attack = attack
     self.name = name
     self.hp = hp
