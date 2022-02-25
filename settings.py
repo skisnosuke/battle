@@ -12,7 +12,7 @@ class Settings:
         self.bgm = "sound/bgm.mp3"
         self.attack_sound = "sound/attack.wav"
         self.attacked_sound = "sound/attacked.wav"
-        self.incantation_sound = "sound/incantation.wav"
+        self.spell_sound = "sound/incantation.wav"
         self.cursor_sound = "sound/cursor.wav"
         self.end_sound = "sound/end.wav"
         self.escape_sound = "sound/escape.wav"

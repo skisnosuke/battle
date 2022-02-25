@@ -24,7 +24,7 @@ class Battle:
         #効果音のロード
         self.attack_sound = pygame.mixer.Sound(self.settings.attack_sound)
         self.attacked_sound = pygame.mixer.Sound(self.settings.attacked_sound)
-        self.incantation_sound = pygame.mixer.Sound(self.settings.incantation_sound)
+        self.spell_sound = pygame.mixer.Sound(self.settings.spell_sound)
         self.cursor_sound = pygame.mixer.Sound(self.settings.cursor_sound)
         self.end_sound = pygame.mixer.Sound(self.settings.end_sound)
         self.escape_sound = pygame.mixer.Sound(self.settings.escape_sound)
@@ -78,7 +78,7 @@ class Battle:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     self._effect_of_attack(self.command.action_selected)
-                    self._effect_of_incation(self.command.action_selected)
+                    self._effect_of_spell(self.command.action_selected)
                     self._effect_of_escape(self.command.action_selected)
                     self.isPress = False
 
@@ -88,9 +88,9 @@ class Battle:
             time.sleep(1)
             self.attacked_sound.play()
 
-    def _effect_of_incation(self, act):
+    def _effect_of_spell(self, act):
         if act == 1:
-            self.incantation_sound.play()
+            self.spell_sound.play()
             time.sleep(1.5)
             self.attacked_sound.play()
 
