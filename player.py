@@ -11,7 +11,7 @@ class Player(Character):
                      self.settings.player_status_name, 
                      self.settings.player_status_hp, 
                      self.settings.player_status_mp, 
-                     self.settings.spells)
+                     self.settings.player_spells)
     self.command = Command()
     self.font = self.settings.font
     self.status_attack = self.settings.player_status_attack

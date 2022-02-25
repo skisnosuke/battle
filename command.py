@@ -11,7 +11,7 @@ class Command:
     if(self.action_selected == 0):  #たたかう
       player.attack(target)
     if(self.action_selected == 1):  #呪文
-      player.cast_spell(target, "メラ")
+      player.cast_spell(target, "mera")
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position+self.settings.command_length), 10)

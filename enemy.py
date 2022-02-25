@@ -9,7 +9,7 @@ class Enemy(Character):
                          self.settings.enemy_status_name, 
                          self.settings.enemy_status_hp, 
                          self.settings.enemy_status_mp, 
-                         self.settings.spells)
+                         self.settings.player_spells)
 
     def draw(self, screen):
         screen.blit(self.settings.enemy_bg_img, self.settings.enemy_bg_img_position)

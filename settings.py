@@ -61,5 +61,5 @@ class Settings:
         self.enemy_status_mp = 0
 
         #呪文の消費MPとそのダメージ(または回復量)
-        self.spells = {"メラ":{"消費MP":2, "ダメージ":10}}
+        self.player_spells = {"mera":{"mp":2, "damage":10}}
         
