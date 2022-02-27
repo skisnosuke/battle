@@ -66,27 +66,28 @@ class Battle:
             self.log.change_action_idx(self.command.action_selected)
             time.sleep(0.5)
             self._update_screen()
-            self._effect_of_attack(self.command.action_selected)
-            self._effect_of_spell(self.command.action_selected)
-            self._effect_of_escape(self.command.action_selected)
+            if self.command.action_selected == 0:    
+                self._play_sound_attack()
+            if self.command.action_selected == 1:    
+                self._play_sound_cast()
+            if self.command.action_selected == 2:    
+                self._play_sound_escape()
         self._update_screen()
 
-    def _effect_of_attack(self, act):
-        if act == 0:
+    def _play_sound_attack(self):
             self.command.act(self.player, self.enemy)
             self.attack_sound.play()
             time.sleep(1)
             self.attacked_sound.play()
 
-    def _effect_of_spell(self, act):
-        if act == 1:
+    def _play_sound_spell(self, act):
             self.canCastSpell = self.command.cast(self.player, self.enemy)
             if self.canCastSpell == True:
                 self.spell_sound.play()
                 time.sleep(1.5)
                 self.attacked_sound.play()
 
-    def _effect_of_escape(self, act):
+    def _play_sound_escape(self, act):
         if act == 2:
             self.escape_sound.play()
 
