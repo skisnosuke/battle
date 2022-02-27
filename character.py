@@ -21,4 +21,4 @@ class Character():
       self.hp -= attack
     else:
       self.hp = 0
-    print(self.name+" hp: %d, by character.reduce_hp()" % self.hp)
+    # print(self.name+" hp: %d, by character.reduce_hp()" % self.hp)
