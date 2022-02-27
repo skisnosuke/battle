@@ -12,12 +12,9 @@ class Character():
     target.reduce_hp(self.status_attack)
 
   def cast_spell(self, target, spell):
-    if(self.mp > self.spells[spell]["mp"]):
+    # if(self.mp > self.spells[spell]["mp"]):
       self.mp -= self.spells[spell]["mp"]
       target.reduce_hp(self.spells[spell]["damage"])
-      return True
-    else:
-      return False
   
   def reduce_hp(self, attack):
     if(self.hp > attack):
