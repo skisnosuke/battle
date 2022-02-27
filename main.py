@@ -81,8 +81,8 @@ class Battle:
             self.attacked_sound.play()
 
     def _play_sound_spell(self, act):
-            self.canCastSpell = self.command.cast(self.player, self.enemy)
-            if self.canCastSpell == True:
+            can_cast_spell = self.command.cast(self.player, self.enemy)
+            if can_cast_spell == True:
                 self.spell_sound.play()
                 time.sleep(1.5)
                 self.attacked_sound.play()
