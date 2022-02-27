@@ -1,7 +1,6 @@
 from pygame.locals import *
 import pygame
 import sys
-import time
 from settings import Settings
 from player import Player
 from enemy import Enemy
@@ -21,14 +20,6 @@ class Battle:
         #bgmのロード
         pygame.mixer.music.load(self.settings.bgm)
 
-        #効果音のロード
-        self.attack_sound = pygame.mixer.Sound(self.settings.attack_sound)
-        self.attacked_sound = pygame.mixer.Sound(self.settings.attacked_sound)
-        self.spell_sound = pygame.mixer.Sound(self.settings.spell_sound)
-        self.cursor_sound = pygame.mixer.Sound(self.settings.cursor_sound)
-        self.end_sound = pygame.mixer.Sound(self.settings.end_sound)
-        self.escape_sound = pygame.mixer.Sound(self.settings.escape_sound)
-
     def run_game(self):
         self.log = Log()
         self.command = Command()
@@ -44,53 +35,8 @@ class Battle:
                 if event.type == pygame.QUIT:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
-                    self._check_key_event(event)
-
-    def _check_key_event(self, event):
-        if event.key == pygame.K_UP:
-            self.command.action_selected = (
-                (self.command.action_selected - 2) % 4 )
-            self.cursor_sound.play()
-        elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
-            self.command.action_selected = (
-                self.command.action_selected + 1 if
-                self.command.action_selected % 2 == 0 else
-                self.command.action_selected - 1 )
-            self.cursor_sound.play()
-        elif event.key == pygame.K_DOWN:
-                self.command.action_selected = (
-                    (self.command.action_selected + 2) % 4 )
-                self.cursor_sound.play()
-        elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-            self.cursor_sound.play()
-            self.log.change_action_idx(self.command.action_selected)
-            time.sleep(0.5)
-            self._update_screen()
-            if self.command.action_selected == 0:    
-                self._play_sound_attack()
-            if self.command.action_selected == 1:    
-                self._play_sound_cast()
-            if self.command.action_selected == 2:    
-                self._play_sound_escape()
-        self._update_screen()
-
-    def _play_sound_attack(self):
-            self.command.act(self.player, self.enemy)
-            self.attack_sound.play()
-            time.sleep(1)
-            self.attacked_sound.play()
-
-    def _play_sound_spell(self, act):
-            can_cast_spell = self.command.cast(self.player, self.enemy)
-            if can_cast_spell == True:
-                self.spell_sound.play()
-                time.sleep(1.5)
-                self.attacked_sound.play()
-
-    def _play_sound_escape(self, act):
-        if act == 2:
-            self.escape_sound.play()
-
+                    self.command.check_key_event(event, self.player, self.enemy, self.log)
+                self._update_screen()
 
     def _update_screen(self):
         #画面のリセット

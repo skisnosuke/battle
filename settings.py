@@ -12,7 +12,7 @@ class Settings:
         self.bgm = "sound/bgm.mp3"
         self.attack_sound = "sound/attack.wav"
         self.attacked_sound = "sound/attacked.wav"
-        self.spell_sound = "sound/incantation.wav"
+        self.spell_sound = "sound/spell.wav"
         self.cursor_sound = "sound/cursor.wav"
         self.end_sound = "sound/end.wav"
         self.escape_sound = "sound/escape.wav"
@@ -45,7 +45,10 @@ class Settings:
         self.player_status_level_position = (40, 50)
         self.player_status_hp_position = (40, 80)
         self.player_status_mp_position = (40, 110)
-
+        self.player_spells = {
+            "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
+            "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "heal" }, 
+        }
 
         #敵 背景
         enemy_bg_img_tmp = pygame.image.load("img/background.jpg")
@@ -59,7 +62,3 @@ class Settings:
         self.enemy_status_name = "スライム"
         self.enemy_status_hp = 20
         self.enemy_status_mp = 0
-
-        #呪文の消費MPとそのダメージ(または回復量)
-        self.player_spells = {"mera":{"mp":2, "damage":10}}
-        
