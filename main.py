@@ -64,22 +64,12 @@ class Battle:
         elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
             self.cursor_sound.play()
             self.log.change_action_idx(self.command.action_selected)
+            time.sleep(0.5)
             self._update_screen()
-            self._wait_key_down()
-
+            self._effect_of_attack(self.command.action_selected)
+            self._effect_of_spell(self.command.action_selected)
+            self._effect_of_escape(self.command.action_selected)
         self._update_screen()
-
-    def _wait_key_down(self):
-        self.isPress = True
-        while self.isPress:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-                elif event.type == pygame.KEYDOWN:
-                    self._effect_of_attack(self.command.action_selected)
-                    self._effect_of_spell(self.command.action_selected)
-                    self._effect_of_escape(self.command.action_selected)
-                    self.isPress = False
 
     def _effect_of_attack(self, act):
         if act == 0:
