@@ -6,11 +6,10 @@ class Log:
   def __init__(self):
     self.settings = Settings()
     self.font = self.settings.font
-    self.text = self.font.render("スライムが あらわれた！", False, (255, 255, 255))
-    self.__action_idx_selected = 0
+    self.__action_selected = "init"
 
-  def change_action_idx_selected(self, idx):
-    self.__action_idx_selected = idx
+  def change_action_selected(self, key):
+    self.__action_selected = key
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), 
@@ -19,13 +18,17 @@ class Log:
       Rect(self.settings.log_position+self.settings.log_length))
 
     # たたかう じゅもん にげる どうぐ
-    messages = [
-      "ゆうしゃの こうげき！",
-      "ゆうしゃは じゅもんをとなえた",
-      "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
-      "どうぐ",
-    ]
-    self.text = self.settings.font.render(messages[self.__action_idx_selected], False, (255, 255, 255))
+    messages = {
+      "init": "スライムが あらわれた！\n コマンド？",
+      "attack": "ゆうしゃ の こうげき！\nスライムに 5ポイントの\nダメージを あたえた！",
+      "spell": "コマンド？",
+      "escape": "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
+      "tool": "どうぐ",
+    }
+    # スライムを たおした！\nけいけんち 1ポイントをかくとく\n1ゴールドを てにいれた！
+    # ゆうしゃ は メラ の\nじゅもんを となえた！
+
+    self.text = self.settings.font.render(messages[self.__action_selected], False, (255, 255, 255))
     screen.blit(self.text,
       (tuple(map(lambda n: n+16, self.settings.log_position+self.settings.log_length))))
 

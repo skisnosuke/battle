@@ -49,10 +49,9 @@ class Command:
               self.cursor_sound.play()
       elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
           self.cursor_sound.play()
-          log.change_action_idx_selected(self.action_idx_selected)
-          time.sleep(0.5)
           action_keys = list(self.actions.keys())
           selected_key = action_keys[self.action_idx_selected]
+          log.change_action_selected(selected_key)
           if selected_key == "attack":
               self._let_attack(player, enemy)
               self._play_sound_attack()
@@ -71,7 +70,6 @@ class Command:
             "escape": { "label": "にげる" },
             "tool": { "label": "どうぐ" },
           }
-
 
   def _play_sound_attack(self):
           self.attack_sound.play()
