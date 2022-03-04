@@ -5,17 +5,17 @@ class Settings:
         self.screen_width = 480
         self.screen_height = 480
         self.bg_color = (10, 10, 10)
-        self.font = pygame.font.Font("font/PixelMplus10-Regular.ttf", 20)
+        self.font = pygame.font.Font("../font/PixelMplus10-Regular.ttf", 20)
         block = 30
         
         #サウンド
-        self.bgm = "sound/bgm.mp3"
-        self.attack_sound = "sound/attack.wav"
-        self.attacked_sound = "sound/attacked.wav"
-        self.spell_sound = "sound/spell.wav"
-        self.cursor_sound = "sound/cursor.wav"
-        self.end_sound = "sound/end.wav"
-        self.escape_sound = "sound/escape.wav"
+        self.bgm = "../sound/bgm.mp3"
+        self.attack_sound = "../sound/attack.wav"
+        self.attacked_sound = "../sound/attacked.wav"
+        self.spell_sound = "../sound/spell.wav"
+        self.cursor_sound = "../sound/cursor.wav"
+        self.end_sound = "../sound/end.wav"
+        self.escape_sound = "../sound/escape.wav"
 
         #コマンド
         self.command_position = (block*7, 10)
@@ -30,7 +30,7 @@ class Settings:
         self.log_length = (block*10, block*5)
 
         #フィールド
-        field_img_tmp = pygame.image.load("img/field.png")
+        field_img_tmp = pygame.image.load("../img/field.png")
         self.field_img = pygame.transform.scale(field_img_tmp,(self.screen_width, self.screen_height))
 
         #プレイヤー
@@ -51,11 +51,11 @@ class Settings:
         }
 
         #敵 背景
-        enemy_bg_img_tmp = pygame.image.load("img/background.jpg")
+        enemy_bg_img_tmp = pygame.image.load("../img/background.jpg")
         self.enemy_bg_img = pygame.transform.scale(enemy_bg_img_tmp,(block*7, block*7))
         self.enemy_bg_img_position = (block*5, block*3)
         #敵 本体
-        enemy_img_tmp = pygame.image.load("img/slime.png")
+        enemy_img_tmp = pygame.image.load("../img/slime.png")
         self.enemy_img = pygame.transform.scale(enemy_img_tmp, (block*3, block*3))
         self.enemy_position = (block*7, block*6)
         self.enemy_status_attack = 10
