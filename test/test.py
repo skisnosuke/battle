@@ -11,11 +11,8 @@ class Test(TestCase):
 
   def test_player_attack_reduces_enemy_hp_by_player_status_attack(self):
     # 主人公の攻撃力の分だけ敵のHPが減る
-    player_spells = {
-            "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
-            }
-    player = Character(10, "p", 1, 0, player_spells) # (attack, name, hp, mp)
-    enemy = Character(0, "e", 10, 0, player_spells) # (attack, name, hp, mp)
+    player = Character(10, "p", 1, 0, {}) # (attack, name, hp, mp, spells)
+    enemy = Character(0, "e", 10, 0, {}) # (attack, name, hp, mp, spells)
     player.attack(enemy)
     actual = enemy.hp
     expected = 0
