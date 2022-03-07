@@ -21,7 +21,7 @@ class Test(TestCase):
     expected = 0
     self.assertEqual(expected, actual)
 
-  def test_player_cast_spell_reduce_enemy_hp_by_mera_damage(self):
+  def test_player_cast_spell_reduces_enemy_hp_by_mera_damage(self):
     player_spells = {
             "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
             }
