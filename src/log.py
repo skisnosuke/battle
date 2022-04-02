@@ -24,9 +24,9 @@ class Log:
       "spell": "コマンド？",
       "escape": "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
       "tool": "どうぐ",
+      # "mera": "ゆうしゃ は メラ の\nじゅもんを となえた！"
     }
     # スライムを たおした！\nけいけんち 1ポイントをかくとく\n1ゴールドを てにいれた！
-    # ゆうしゃ は メラ の\nじゅもんを となえた！
 
     self.text = self.settings.font.render(messages[self.__action_selected], False, (255, 255, 255))
     screen.blit(self.text,

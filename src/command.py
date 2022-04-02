@@ -28,7 +28,7 @@ class Command:
       if event.key == pygame.K_UP:
           self.action_idx_selected = (
               (self.action_idx_selected - 2) % num_of_actions )
-          Sound.play("cursor")
+          Sound.play_cursor()
           
       elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
           self.action_idx_selected = (
@@ -36,28 +36,26 @@ class Command:
                 if self.action_idx_selected % 2 == 0
                   and self.action_idx_selected + 1 < num_of_actions
                 else self.action_idx_selected - 1 )
-          Sound.play("cursor")
+          Sound.play_cursor()
       elif event.key == pygame.K_DOWN:
               self.action_idx_selected = (
                   (self.action_idx_selected + 2) % num_of_actions )
-              Sound.play("cursor")
+              Sound.play_cursor()
       elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-          Sound.play("cursor")
+          Sound.play_cursor()
           action_keys = list(self.actions.keys())
           selected_key = action_keys[self.action_idx_selected]
           log.change_action_selected(selected_key)
           if selected_key == "attack":
               self._let_attack(player, enemy)
-              self._play_sound_attack()
+              Sound.play_attack()
           elif selected_key == "spell":
               self.actions = player.spells
           elif selected_key == "escape":
-              Sound.play("escape")
-              self._play_sound_escape()
+              Sound.play_escape()
           else:
               self._let_cast_spell(player, enemy, selected_key)
-              self._play_sound_spell()
-
+              Sound.play_cast_spell()
       elif event.key == pygame.K_BACKSPACE:
           self.actions = { 
             "attack": { "label": "たたかう" },
@@ -65,16 +63,6 @@ class Command:
             "escape": { "label": "にげる" },
             "tool": { "label": "どうぐ" },
           }
-
-  def _play_sound_attack(self):
-          Sound.play("attack")
-          time.sleep(1)
-          Sound.play("attacked")
-
-  def _play_sound_spell(self):
-        Sound.play("spell")
-        time.sleep(1)
-        Sound.play("attacked")
 
   def draw(self, screen):
     pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position+self.settings.command_length), 10)
