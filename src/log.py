@@ -19,14 +19,14 @@ class Log:
 
     # たたかう じゅもん にげる どうぐ
     messages = {
-      "init": "スライムが あらわれた！\n コマンド？",
+      "init": "スライムが あらわれた！\nコマンド？",
       "attack": "ゆうしゃ の こうげき！\nスライムに 5ポイントの\nダメージを あたえた！",
       "spell": "コマンド？",
       "escape": "ゆうしゃは にげだした。\nしかし まわりこまれてしまった。",
       "tool": "どうぐ",
+      # "mera": "ゆうしゃ は メラ の\nじゅもんを となえた！"
     }
     # スライムを たおした！\nけいけんち 1ポイントをかくとく\n1ゴールドを てにいれた！
-    # ゆうしゃ は メラ の\nじゅもんを となえた！
 
     self.text = self.settings.font.render(messages[self.__action_selected], False, (255, 255, 255))
     screen.blit(self.text,

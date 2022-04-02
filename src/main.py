@@ -6,6 +6,7 @@ from player import Player
 from enemy import Enemy
 from log import Log
 from command import Command
+from sound import Sound
 
 class Battle:
     #ゲームのアセットと動作を管理する全体的なクラス
@@ -17,9 +18,6 @@ class Battle:
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("ドラクエ風戦闘ゲーム")
 
-        #bgmのロード
-        pygame.mixer.music.load(self.settings.bgm)
-
     def run_game(self):
         self.log = Log()
         self.command = Command()
@@ -27,7 +25,8 @@ class Battle:
         self.enemy = Enemy()
         
         self._update_screen()
-        pygame.mixer.music.play(-1)
+        Sound.play_bgm()
+
         #メインループ
         while True:
             #キーボード、マウスの監視
