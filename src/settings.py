@@ -8,15 +8,6 @@ class Settings:
         self.font = pygame.font.Font("../font/PixelMplus10-Regular.ttf", 20)
         block = 30
         
-        #サウンド
-        self.bgm = "../sound/bgm.mp3"
-        self.attack_sound = "../sound/attack.wav"
-        self.attacked_sound = "../sound/attacked.wav"
-        self.spell_sound = "../sound/spell.wav"
-        self.cursor_sound = "../sound/cursor.wav"
-        self.end_sound = "../sound/end.wav"
-        self.escape_sound = "../sound/escape.wav"
-
         #コマンド
         self.command_position = (block*7, 10)
         self.command_length = (block*7, block*3)
