@@ -37,6 +37,10 @@ class Battle:
                 elif event.type == pygame.KEYDOWN:
                     self.is_turn_end = self.command.check_key_event(event, self.player, self.enemy, self.log)
                     print(self.is_turn_end)
+                    if self.is_turn_end == True:
+                        print("スライムのターン")
+                        if self.enemy.hp <= 0:
+                            print("スライムは倒れた")
                 self._update_screen()
 
     def _update_screen(self):
