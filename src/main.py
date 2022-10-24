@@ -23,6 +23,7 @@ class Battle:
         self.command = Command()
         self.player = Player()
         self.enemy = Enemy()
+        self.is_turn_end = False
         
         self._update_screen()
         Sound.play_bgm()
@@ -34,7 +35,8 @@ class Battle:
                 if event.type == pygame.QUIT:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
-                    self.command.check_key_event(event, self.player, self.enemy, self.log)
+                    self.is_turn_end = self.command.check_key_event(event, self.player, self.enemy, self.log)
+                    print(self.is_turn_end)
                 self._update_screen()
 
     def _update_screen(self):

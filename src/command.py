@@ -49,6 +49,8 @@ class Command:
           if selected_key == "attack":
               self._let_attack(player, enemy)
               Sound.play_attack()
+              #"たたかう"のみで動作の確認
+              return True
           elif selected_key == "spell":
               self.actions = player.spells
           elif selected_key == "escape":
