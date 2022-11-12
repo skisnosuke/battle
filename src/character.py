@@ -1,20 +1,21 @@
-from settings import Settings
+from configuration import Config
+
 
 class Character():
-  def __init__(self, attack, name, hp, mp, spells):
+  def __init__(self, name, hp, mp, attack, spell):
     self.status_attack = attack
     self.name = name
     self.hp = hp
     self.mp = mp
-    self.spells = spells
+    self.spell = spell
 
   def attack(self, target):
     target.reduce_hp(self.status_attack)
 
   def cast_spell(self, target, spell):
     # if(self.mp > self.spells[spell]["mp"]):
-      self.mp -= self.spells[spell]["mp"]
-      target.reduce_hp(self.spells[spell]["damage"])
+      self.mp -= self.spell[spell]["mp"]
+      target.reduce_hp(self.spell[spell]["damage"])
   
   def reduce_hp(self, attack):
     if(self.hp > attack):

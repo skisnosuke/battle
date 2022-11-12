@@ -1,7 +1,10 @@
 import sys
+
 sys.path.append("../src")
 from unittest import TestCase, main
-from character import Character # vscode上で警告出るが無視
+
+from character import Character  # vscode上で警告出るが無視
+
 
 class Test(TestCase):
   def test_example(self): # メソッド名は必ずtest_で始める
@@ -21,8 +24,8 @@ class Test(TestCase):
   def test_player_cast_spell_reduces_enemy_hp_by_mera_damage(self):
     # メラのダメージだけ敵のHPが減る
     player_spells = {
-            "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
-            }
+      "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
+    }
     player = Character(0, "p", 1, 10, player_spells)
     enemy = Character(0, "e", 10, 0, player_spells)
     player.cast_spell(enemy, "mera")

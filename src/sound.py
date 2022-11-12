@@ -1,29 +1,39 @@
-import pygame
 import time
-from pygame.locals import *
+
+from pygame import mixer
+
+from path import Path
+
 
 class Sound():
   @staticmethod
   def play_attack():
-    pygame.mixer.Sound("../sound/attack.wav").play()
+    path = Path.generate_absolute_path("sound/attack.wav")
+    mixer.Sound(path).play()
     time.sleep(1)
-    pygame.mixer.Sound("../sound/attacked.wav").play()
+    path = Path.generate_absolute_path("sound/attacked.wav")
+    mixer.Sound(path).play()
 
   @staticmethod
   def play_cast_spell():
-    pygame.mixer.Sound("../sound/spell.wav").play()
+    path = Path.generate_absolute_path("sound/spell.wav")
+    mixer.Sound(path).play()
     time.sleep(1)
-    pygame.mixer.Sound("../sound/attacked.wav").play()
+    path = Path.generate_absolute_path("sound/attacked.wav")
+    mixer.Sound(path).play()
   
   @staticmethod
   def play_escape():
-    pygame.mixer.Sound("../sound/escape.wav").play()
+    path = Path.generate_absolute_path("sound/escape.wav")
+    mixer.Sound(path).play()
 
   @staticmethod
   def play_cursor():
-    pygame.mixer.Sound("../sound/cursor.wav").play()
+    path = Path.generate_absolute_path("sound/cursor.wav")
+    mixer.Sound(path).play()
 
   @staticmethod
   def play_bgm():
-    pygame.mixer.music.load("../sound/bgm.mp3")
-    pygame.mixer.music.play(-1)
+    path = Path.generate_absolute_path("sound/bgm.mp3")
+    mixer.music.load(path)
+    mixer.music.play(-1)

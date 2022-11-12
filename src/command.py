@@ -1,96 +1,74 @@
-import pygame
-import time
+from pygame import (K_BACKSPACE, K_DOWN, K_LEFT, K_RETURN, K_RIGHT, K_SPACE,
+                    K_UP, Rect, draw)
+
+from configuration import Config
 from sound import Sound
-from pygame.locals import *
-from settings import Settings
+
 
 class Command:
   def __init__(self):
-    self.settings = Settings()
-    self.action_idx_selected = 0
+    self.selected_idx = 0
     # |0 1|
     # |2 3|
-    self.actions = {
-      "attack": { "label": "たたかう" },
-      "spell": { "label": "じゅもん" },
-      "escape": { "label": "にげる" },
-      "tool": { "label": "どうぐ" },
-    }
+    self.options = [
+      { "label": "たたかう", "id": "attack" }, { "label": "じゅもん", "id": "spell" },
+      { "label": "にげる", "id": "escape" }, { "label": "どうぐ", "id": "tool" },
+    ]
 
   def _let_attack(self, attacker, target):
-      attacker.attack(target)
+    attacker.attack(target)
     
   def _let_cast_spell(self, caster, target, spell):
-      caster.cast_spell(target, spell)
+    caster.cast_spell(target, spell)
 
-  def check_key_event(self, event, player, enemy, log):
-      num_of_actions = len(list(self.actions.keys()))
-      if event.key == pygame.K_UP:
-          self.action_idx_selected = (
-              (self.action_idx_selected - 2) % num_of_actions )
+  def _move_cursor(self):
+    return 0
+
+  def check_key_event(self, key, player, enemy, log):
+      num_of_actions = len(self.options)
+      if key == K_UP:
+          self.selected_idx = (
+              (self.selected_idx - 2) % num_of_actions )
           Sound.play_cursor()
-          
-      elif event.key == pygame.K_RIGHT or event.key == pygame.K_LEFT:
-          self.action_idx_selected = (
-              self.action_idx_selected + 1
-                if self.action_idx_selected % 2 == 0
-                  and self.action_idx_selected + 1 < num_of_actions
-                else self.action_idx_selected - 1 )
+
+      elif key == K_RIGHT or key == K_LEFT:
+          self.selected_idx = (
+              self.selected_idx + 1
+                if self.selected_idx % 2 == 0
+                  and self.selected_idx + 1 < num_of_actions
+                else self.selected_idx - 1 )
           Sound.play_cursor()
-      elif event.key == pygame.K_DOWN:
-              self.action_idx_selected = (
-                  (self.action_idx_selected + 2) % num_of_actions )
+      elif key == K_DOWN:
+              self.selected_idx = (
+                  (self.selected_idx + 2) % num_of_actions )
               Sound.play_cursor()
-      elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+      elif key == K_RETURN or key == K_SPACE:
           Sound.play_cursor()
-          action_keys = list(self.actions.keys())
-          selected_key = action_keys[self.action_idx_selected]
-          log.change_action_selected(selected_key)
-          if selected_key == "attack":
+          selected_option_id = self.options[self.selected_idx]["id"]
+          if selected_option_id == "attack":
               self._let_attack(player, enemy)
               Sound.play_attack()
-          elif selected_key == "spell":
-              self.actions = player.spells
-          elif selected_key == "escape":
+          elif selected_option_id == "spell":
+              self.option = player.spell
+          elif selected_option_id == "escape":
               Sound.play_escape()
           else:
-              self._let_cast_spell(player, enemy, selected_key)
+              self._let_cast_spell(player, enemy, selected_option_id)
               Sound.play_cast_spell()
-      elif event.key == pygame.K_BACKSPACE:
-          self.actions = { 
-            "attack": { "label": "たたかう" },
-            "spell": { "label": "じゅもん" },
-            "escape": { "label": "にげる" },
-            "tool": { "label": "どうぐ" },
-          }
+      elif key == K_BACKSPACE:
+        self.options = [
+          { "label": "たたかう", "id": "attack" }, { "label": "じゅもん", "id": "spell" },
+          { "label": "にげる", "id": "escape" }, { "label": "どうぐ", "id": "tool" },
+        ]
 
-  def draw(self, screen):
-    pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.command_position+self.settings.command_length), 10)
-    pygame.draw.rect(screen, (0,0,0), Rect(self.settings.command_position+self.settings.command_length))
+  def draw(self, font, screen):
+    draw.rect(screen, Config.command["border_color"], Rect((Config.command["window_coordinate"]+Config.command["window_size"])), Config.command["border_width"])
+    draw.rect(screen, Config.command["window_color"], Rect(Config.command["window_coordinate"]+Config.command["window_size"]))
 
-    action_labels = list(map(lambda elem: elem["label"], self.actions.values()))
-    action_texts = list(map(
-      lambda action: self.settings.font.render(action, False, (255, 255, 255)), action_labels
-    ))
-    command_action_positions = [
-      self.settings.command_action_position_upper_left,
-      self.settings.command_action_position_upper_right,
-      self.settings.command_action_position_lower_left,
-      self.settings.command_action_position_lower_right,
-    ]
-    for idx in range(len(action_texts)):
-      screen.blit(action_texts[idx], command_action_positions[idx])
+    for idx in range(len(self.options)):
+      label = font.render(self.options[idx]["label"], False, Config.font["color"])
+      screen.blit(label, Config.command["option_coordinates"][idx])
 
-    cursor_positions = [
-      (self.settings.command_action_position_upper_left[0]-18,
-        self.settings.command_action_position_upper_left[1]),
-      (self.settings.command_action_position_upper_right[0]-18,
-        self.settings.command_action_position_upper_right[1]),
-      (self.settings.command_action_position_lower_left[0]-18,
-        self.settings.command_action_position_lower_left[1]),
-      (self.settings.command_action_position_lower_right[0]-18,
-        self.settings.command_action_position_lower_right[1]),
-    ]
-    cursor = self.settings.font.render("▶", False, (255, 255, 255))
-    screen.blit(cursor, cursor_positions[self.action_idx_selected])
+    cursor = font.render("▶", False, Config.font["color"])
+    screen.blit(cursor, Config.command["cursor_coordinates"][self.selected_idx])
     
