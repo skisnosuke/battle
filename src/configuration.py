@@ -10,7 +10,9 @@ class Config:
             (235, 20), (335, 20), 
             (235, 60), (335, 60)
         ],
-        "cursor_coordinates": [
+    }
+    cursor = {
+        "coordinates": [
             (217, 20), (317, 20),
             (217, 60), (317, 60)
         ]
@@ -21,23 +23,24 @@ class Config:
     }
 
     spell = {
-        "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
-        "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "heal" }, 
+        "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "offensive" },
+        "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "recovery" }, 
     }
     player = {
         "window_coordinate": (30, 10), "window_size": (120, 130), "window_color": (0, 0, 0),
         "border_width": 10, "border_color": (255, 255, 255),
         "name_coordinate": (40, 20), "level_coordinate": (40, 50), "hp_coordinate": (40, 80), "mp_coordinate": (40, 110),
         "status": {
-            "attack": 5,
             "name": "ゆうしゃ",
             "level": 1,
             "hp": 10,
             "mp": 5,
+            "attack": 5,
+            "spells": ["mera", "hoimi"],
             "spell": {
-                "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "attack" },
-                "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "heal" }, 
-            }
+                "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "offensive" },
+                "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "recovery" },
+            },
         }
     }
     enemy = {
@@ -50,7 +53,7 @@ class Config:
                 "hp": 20,
                 "mp": 0,
                 "attack": 10,
-                "spell": {}
+                "spells": []
             },
         }
     }

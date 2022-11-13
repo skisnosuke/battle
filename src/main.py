@@ -6,6 +6,7 @@ from pygame import KEYDOWN, QUIT, display, font, image, init, transform
 from command import Command
 from configuration import Config
 from enemy import Enemy
+from key import Key
 from log import Log
 from path import Path
 from player import Player
@@ -26,12 +27,12 @@ class Game:
         self.log = Log()
         self.command = Command()
         self.player = Player(
-            Config.player["status"]["level"],
             Config.player["status"]["name"],
+            Config.player["status"]["level"],
             Config.player["status"]["hp"],
             Config.player["status"]["mp"],
             Config.player["status"]["attack"],
-            Config.player["status"]["spell"],
+            Config.player["status"]["spells"],
         )
 
         enemy_name = "slime"
@@ -41,7 +42,7 @@ class Game:
             Config.enemy[enemy_name]["status"]["hp"],
             Config.enemy[enemy_name]["status"]["mp"],
             Config.enemy[enemy_name]["status"]["attack"],
-            Config.enemy[enemy_name]["status"]["spell"],
+            Config.enemy[enemy_name]["status"]["spells"],
             transform.scale(image.load(enemy_path), Config.enemy[enemy_name]["size"]),
             Config.enemy[enemy_name]["coordinate"],
         )
@@ -57,7 +58,17 @@ class Game:
                 if event.type == QUIT:
                     sys.exit()
                 elif event.type == KEYDOWN:
-                    self.command.check_key_event(event.key, self.player, self.enemy, self.log)
+                    if not Key.is_valid_key(event.key):
+                        return
+                    Sound.play_cursor()
+                    if Key.should_cursor_move(event.key):
+                        self.command.move_cursor(event.key)
+                    elif Key.should_command_execute(event.key):
+                        self.command.execute(self.player, self.enemy)
+                    elif Key.should_go_back(event.key):
+                        self.command.go_back()
+                    message_key = self.command.get_option_id()
+                    self.log.set_message(message_key)
                 self._update_screen()
 
     def _update_screen(self):

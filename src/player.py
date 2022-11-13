@@ -5,8 +5,8 @@ from configuration import Config
 
 
 class Player(Character):
-  def __init__(self, level, name, hp, mp, attack, spell):
-    super().__init__(name, hp, mp, attack, spell)
+  def __init__(self, name, level, hp, mp, attack, spells):
+    super().__init__(name, hp, mp, attack, spells)
     self.level = level
 
   def draw(self, font, screen):
