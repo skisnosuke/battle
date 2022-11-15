@@ -6,6 +6,7 @@ from pygame import KEYDOWN, QUIT, display, font, image, init, transform
 from command import Command
 from configuration import Config
 from enemy import Enemy
+from error import NotEnoughMpError
 from key import Key
 from log import Log
 from path import Path
@@ -24,7 +25,6 @@ class Game:
         self.field_img = transform.scale(image.load(field_path),(Config.screen["width"], Config.screen["height"]))
         background_path = Path.generate_absolute_path(Config.background["path"])
         self.background_img = transform.scale(image.load(background_path), (Config.background["size"]))
-        self.log = Log()
         self.command = Command()
         self.player = Player(
             Config.player["status"]["name"],
@@ -34,7 +34,6 @@ class Game:
             Config.player["status"]["attack"],
             Config.player["status"]["spells"],
         )
-
         enemy_name = "slime"
         enemy_path = Path.generate_absolute_path(Config.enemy[enemy_name]["path"])
         self.enemy = Enemy(
@@ -46,29 +45,33 @@ class Game:
             transform.scale(image.load(enemy_path), Config.enemy[enemy_name]["size"]),
             Config.enemy[enemy_name]["coordinate"],
         )
+        self.log = Log(self.enemy.name)
 
     def run_game(self):
         self._update_screen()
         Sound.play_bgm()
 
-        #メインループ
         while True:
-            #キーボード、マウスの監視
+            #入力を監視
             for event in pygame.event.get():
                 if event.type == QUIT:
                     sys.exit()
                 elif event.type == KEYDOWN:
                     if not Key.is_valid_key(event.key):
-                        return
-                    Sound.play_cursor()
+                        Sound.play_cursor()
+                        break
                     if Key.should_cursor_move(event.key):
                         self.command.move_cursor(event.key)
-                    elif Key.should_command_execute(event.key):
-                        self.command.execute(self.player, self.enemy)
-                    elif Key.should_go_back(event.key):
+                        break
+                    if Key.should_command_execute(event.key):
+                        try:
+                            self.command.execute(self.player, self.enemy, self.log)
+                        except NotEnoughMpError:
+                            self.log.set_message("MPがたりない")
+                        break
+                    if Key.should_go_back(event.key):
                         self.command.go_back()
-                    message_key = self.command.get_option_id()
-                    self.log.set_message(message_key)
+                        break
                 self._update_screen()
 
     def _update_screen(self):

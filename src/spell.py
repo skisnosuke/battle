@@ -1,22 +1,19 @@
 from configuration import Config
+from sound import Sound
 
 
 class Spell:
-  _spell = Config.spell
-
-  @staticmethod
-  def get_label(self, id):
-    return self._spell[id]["label"]
+  def __init__(self, key):
+    self.label = Config.spell[key]["label"]
+    self.mp = Config.spell[key]["mp"]
+    self.type = Config.spell[key]["type"]
+    self.effect = Config.spell[key]["effect"]
   
-  @staticmethod
-  def get_mp(self, id):
-    return self._spell[id]["mp"]
-
-  @staticmethod
-  def get_damage(self, id):
-    return self._spell[id]["damage"]
-
-
-  # @staticmethod #TODO
-  # def cast(id):
-  #   return Spell.
+  def cast(self, caster, target):
+    caster.reduce_mp(self.mp)
+    Sound.play_cast_spell()
+    if self.type == "offensive":
+      target.reduce_hp(self.effect)
+    elif self.type == "recovery":
+      caster.heal_hp(self.effect)
+    

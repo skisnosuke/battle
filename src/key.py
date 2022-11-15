@@ -9,23 +9,19 @@ class Key:
   }
 
   @staticmethod
-  def get(self, id):
-    self.table[id]
+  def is_valid_key(key):
+    return key in Key.table.keys()
 
   @staticmethod
-  def is_valid_key(self, key):
-    key in self.table.keys()
+  def should_cursor_move(key):
+    return Key.table[key] == "move"
 
   @staticmethod
-  def should_cursor_move(self, key):
-    return key in self.table[key] == "move"
+  def should_command_execute(key):
+    return Key.table[key] == "select"
 
   @staticmethod
-  def should_command_execute(self, key):
-    return key in self.table[key] == "select"
-
-  @staticmethod
-  def should_go_back(self, key):
-    return key in self.table[key] == "go_back"
+  def should_go_back(key):
+    return Key.table[key] == "go_back"
 
 

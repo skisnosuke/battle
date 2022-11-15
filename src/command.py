@@ -3,17 +3,16 @@ from pygame import Rect, draw
 from configuration import Config
 from cursor import Cursor
 from sound import Sound
-from spell import Spell
 
 
 class Command:
   def __init__(self):
     self.cursor = Cursor()
-    self.default_options = [
-        { "label": "たたかう", "id": "attack" }, { "label": "じゅもん", "id": "spell" },
+    self.initial_options = [
+        { "label": "たたかう", "id": "attack" }, { "label": "じゅもん", "id": "spells" },
         { "label": "にげる", "id": "escape" }, { "label": "どうぐ", "id": "tool" },
     ]
-    self.options = self.default_options
+    self.options = self.initial_options
 
   def _let_attack(self, attacker, target):
     attacker.attack(target)
@@ -29,22 +28,29 @@ class Command:
     self.cursor.move(key)
 
   def go_back(self):
-    self.options = self.default_options
+    self.options = self.initial_options
   
-  def execute(self, player, enemy):
+  def execute(self, player, enemy, log):
     option_idx = self.cursor.get_idx()
     option_id = self.options[option_idx]["id"]
     if option_id == "attack":
-        self._let_attack(player, enemy)
-        Sound.play_attack()
-    elif option_id == "spell":
-        self.options = [{"id": id, "label": Spell.get_label(id)} for id in player.spells]
-    elif option_id == "escape":
-        Sound.play_escape()
-    else:
-        self._let_cast_spell(player, enemy, option_id)
-        Sound.play_cast_spell()
-    return
+      self._let_attack(player, enemy)
+      Sound.play_attack()
+      log.set_message(player.name + " の こうげき！\n" + enemy.name + "に 5ポイントの\nダメージ！")
+      return
+    if option_id == "spells":
+      self.options = [{"id": "spell", "name": key, "label": value.label} for key, value in player.spell.items()]
+      return
+    if option_id == "spell":
+      spell_name = self.options[option_idx]["name"]
+      player.cast_spell(spell_name, enemy)
+      spell_label = self.options[option_idx]["label"]
+      log.set_message(player.name + " は " + spell_label + " の\nじゅもんを となえた！")
+      return
+    if option_id == "escape":
+      Sound.play_escape()
+      log.set_message(player.name + " は にげだした。\nしかし まわりこまれてしまった。")
+      return
 
   def draw(self, font, screen):
     draw.rect(screen, Config.command["border_color"], Rect((Config.command["window_coordinate"]+Config.command["window_size"])), Config.command["border_width"])

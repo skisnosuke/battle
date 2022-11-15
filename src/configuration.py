@@ -22,9 +22,11 @@ class Config:
         "border_width": 10, "border_color": (255, 255, 255),
     }
 
+
+
     spell = {
-        "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "offensive" },
-        "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "recovery" }, 
+        "mera": { "label": "メラ", "mp": 2, "type": "offensive", "effect": 10 },
+        "hoimi": { "label": "ホイミ", "mp": 3, "type": "recovery", "effect": -20, }, 
     }
     player = {
         "window_coordinate": (30, 10), "window_size": (120, 130), "window_color": (0, 0, 0),
@@ -37,10 +39,6 @@ class Config:
             "mp": 5,
             "attack": 5,
             "spells": ["mera", "hoimi"],
-            "spell": {
-                "mera": { "label": "メラ", "mp": 2, "damage": 10, "type": "offensive" },
-                "hoimi": { "label": "ホイミ", "mp": 3, "damage": -20, "type": "recovery" },
-            },
         }
     }
     enemy = {

@@ -1,0 +1,2 @@
+class NotEnoughMpError(Exception):
+  pass
