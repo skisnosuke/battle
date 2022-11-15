@@ -14,6 +14,8 @@ class Spell:
     Sound.play_cast_spell()
     if self.type == "offensive":
       target.reduce_hp(self.effect)
-    elif self.type == "recovery":
+      return
+    if self.type == "recovery":
       caster.heal_hp(self.effect)
+      return
     
