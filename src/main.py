@@ -14,7 +14,7 @@ from player import Player
 from sound import Sound
 
 
-class Game:
+class Battle:
     def __init__(self):
         init()
         self.settings = Config()
@@ -47,7 +47,7 @@ class Game:
         )
         self.log = Log(self.enemy.name)
 
-    def run_game(self):
+    def run(self):
         self._update_screen()
         Sound.play_bgm()
 
@@ -89,5 +89,5 @@ class Game:
 
 if __name__ == "__main__":
     display.set_caption("Dragon Quest 1")
-    game = Game()
-    game.run_game()
+    battle = Battle()
+    battle.run()
