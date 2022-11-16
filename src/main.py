@@ -72,7 +72,7 @@ class Battle:
                     if Key.should_go_back(event.key):
                         self.command.go_back()
                         break
-                self._update_screen()
+            self._update_screen()
 
     def _update_screen(self):
         #画面のリセット
