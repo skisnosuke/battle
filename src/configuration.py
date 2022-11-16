@@ -23,10 +23,10 @@ class Config:
     }
 
 
-
     spell = {
         "mera": { "label": "メラ", "mp": 2, "type": "offensive", "effect": 10 },
-        "hoimi": { "label": "ホイミ", "mp": 3, "type": "recovery", "effect": -20, }, 
+        "hoimi": { "label": "ホイミ", "mp": 3, "type": "recovery", "effect": 20 }, 
+        "behoimi": { "label": "ベホイミ", "mp": 8, "type": "recovery", "effect": 90 }, 
     }
     player = {
         "window_coordinate": (30, 10), "window_size": (120, 130), "window_color": (0, 0, 0),
@@ -36,9 +36,9 @@ class Config:
             "name": "ゆうしゃ",
             "level": 1,
             "hp": 10,
-            "mp": 5,
+            "mp": 10,
             "attack": 5,
-            "spells": ["mera", "hoimi"],
+            "spells": ["mera", "hoimi", "behoimi"],
         }
     }
     enemy = {

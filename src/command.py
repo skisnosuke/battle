@@ -25,7 +25,7 @@ class Command:
     return self.options[selected_idx]["id"]
 
   def move_cursor(self, key):
-    self.cursor.move(key)
+    self.cursor.move(len(self.options), key)
 
   def go_back(self):
     self.options = self.initial_options
@@ -35,8 +35,8 @@ class Command:
     option_id = self.options[option_idx]["id"]
     if option_id == "attack":
       self._let_attack(player, enemy)
-      Sound.play_attack()
       log.set_message(player.name + " の こうげき！\n" + enemy.name + "に 5ポイントの\nダメージ！")
+      Sound.play_attack()
       return
     if option_id == "spells":
       self.options = [{"id": "spell", "name": key, "label": value.label} for key, value in player.spell.items()]
@@ -48,8 +48,8 @@ class Command:
       log.set_message(player.name + " は " + spell_label + " の\nじゅもんを となえた！")
       return
     if option_id == "escape":
-      Sound.play_escape()
       log.set_message(player.name + " は にげだした。\nしかし まわりこまれてしまった。")
+      Sound.play_escape()
       return
 
   def draw(self, font, screen):

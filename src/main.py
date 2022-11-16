@@ -58,8 +58,8 @@ class Game:
                     sys.exit()
                 elif event.type == KEYDOWN:
                     if not Key.is_valid_key(event.key):
-                        Sound.play_cursor()
                         break
+                    Sound.play_cursor()
                     if Key.should_cursor_move(event.key):
                         self.command.move_cursor(event.key)
                         break
