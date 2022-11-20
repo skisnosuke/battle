@@ -9,6 +9,9 @@ class Spell:
     self.type = Config.spell[key]["type"]
     self.effect = Config.spell[key]["effect"]
   
+  def get_effect(self):
+    return self.effect
+
   def cast(self, caster, target):
     caster.reduce_mp(self.mp)
     Sound.play_cast_spell()

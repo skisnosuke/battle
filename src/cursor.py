@@ -4,7 +4,9 @@ from configuration import Config
 
 
 class Cursor:
-  def __init__(self):
+  def __init__(self, screen, font):
+    self.screen = screen
+    self.font = font
     self.idx = 0
     # |0 1|
     # |2 3|
@@ -32,9 +34,9 @@ class Cursor:
   def move(self, len, key):
     self.idx = self.transition[len-1][self.idx][key]
 
-  def draw(self, font, screen):
-    cursor = font.render("▶", False, Config.font["color"])
-    screen.blit(cursor, Config.cursor["coordinates"][self.idx])
+  def draw(self):
+    cursor = self.font.render("▶", False, Config.font["color"])
+    self.screen.blit(cursor, Config.cursor["coordinates"][self.idx])
 
   
 
