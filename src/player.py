@@ -1,32 +1,24 @@
-import pygame
-from pygame.locals import *
-from settings import Settings
-from command import Command
+from pygame import Rect, draw
+
 from character import Character
+from configuration import Config
+
 
 class Player(Character):
-  def __init__(self):
-    self.settings = Settings()
-    super().__init__(self.settings.player_status_attack,
-                     self.settings.player_status_name, 
-                     self.settings.player_status_hp, 
-                     self.settings.player_status_mp, 
-                     self.settings.player_spells)
-    self.command = Command()
-    self.font = self.settings.font
-    self.status_attack = self.settings.player_status_attack
-    self.name = self.settings.font.render(self.name, False, (255, 255, 255))
-    self.level = self.settings.player_status_level
+  def __init__(self, name, level, hp, mp, attack, spells):
+    super().__init__(name, hp, mp, attack, spells)
+    self.level = level
 
-  def draw(self, screen):
-    pygame.draw.rect(screen, (255, 255, 255), Rect(self.settings.player_position+self.settings.player_length), 10)
-    pygame.draw.rect(screen, (0,0,0), Rect(self.settings.player_position+self.settings.player_length))
+  def draw(self, font, screen):
+    draw.rect(screen, Config.player["border_color"], Rect(Config.player["window_coordinate"]+Config.player["window_size"]), Config.player["border_width"])
+    draw.rect(screen, Config.player["window_color"], Rect(Config.player["window_coordinate"]+Config.player["window_size"]))
 
-    hp = self.settings.font.render("ＨＰ{:6d}".format(self.hp), False, (255, 255, 255))
-    mp = self.settings.font.render("ＭＰ{:6d}".format(self.mp), False, (255, 255, 255))
-    level = self.settings.font.render("レベル{:4d}".format(self.level), False, (255, 255, 255))
+    name = font.render(self.name, False, Config.font["color"])
+    hp = font.render("ＨＰ{:6d}".format(self.hp), False, Config.font["color"])
+    mp = font.render("ＭＰ{:6d}".format(self.mp), False, Config.font["color"])
+    level = font.render("レベル{:4d}".format(self.level), False, Config.font["color"])
 
-    screen.blit(self.name, self.settings.player_status_name_position)
-    screen.blit(level, self.settings.player_status_level_position)
-    screen.blit(hp, self.settings.player_status_hp_position)
-    screen.blit(mp, self.settings.player_status_mp_position)
+    screen.blit(name, Config.player["name_coordinate"])
+    screen.blit(level, Config.player["level_coordinate"])
+    screen.blit(hp, Config.player["hp_coordinate"])
+    screen.blit(mp, Config.player["mp_coordinate"])
